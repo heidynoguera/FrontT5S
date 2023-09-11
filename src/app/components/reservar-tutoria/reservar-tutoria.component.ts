@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from 'src/app/services/rest.service';
 
 @Component({
-  selector: 'app-geografia',
-  templateUrl: './geografia.component.html',
-  styleUrls: ['./geografia.component.css']
+  selector: 'app-reservar-tutoria',
+  templateUrl: './reservar-tutoria.component.html',
+  styleUrls: ['./reservar-tutoria.component.css']
 })
-export class GeografiaComponent implements OnInit{
+export class ReservarTutoriaComponent implements OnInit{
   constructor(public api: RestService){
   }
   ngOnInit(): void{
@@ -16,5 +16,4 @@ export class GeografiaComponent implements OnInit{
   public get (){
     this.api.Get("geografia");
   }
-
 }

@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReservarMateriaComponent } from './components/reservar-materia/reservar-materia.component';
 import { LoginComponent } from './components/login/login.component';
 import { EstudianteComponent } from './components/estudiante/estudiante.component';
 import { TutorComponent } from './components/tutor/tutor.component';
@@ -22,11 +21,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { AvatarModule } from 'ngx-avatars';
+import { ReservarTutoriaComponent } from './components/reservar-tutoria/reservar-tutoria.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReservarMateriaComponent,
     LoginComponent,
     EstudianteComponent,
     TutorComponent,
@@ -36,7 +35,8 @@ import { AvatarModule } from 'ngx-avatars';
     FormaPagoComponent,
     ValoracionComponent,
     MateriaComponent,
-    MenuComponent
+    MenuComponent,
+    ReservarTutoriaComponent,
   ],
   imports: [
     BrowserModule,
