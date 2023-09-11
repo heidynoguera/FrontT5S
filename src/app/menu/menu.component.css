@@ -1,0 +1,36 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.avatar-container {
+  position: absolute;
+  top: 1.5;
+  right: 0;
+  z-index: 2; /* Ajusta el valor según sea necesario */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Espacio entre avatares */
+  align-items: center;
+ 
+ 
+}
+
+/* Estilo opcional para los avatares */
+ngx-avatars {
+  border: 2px solid #cccccc; /* Cambia el estilo del borde según tu preferencia */
+  border-radius: 50%; /* Hace que los avatares tengan forma circular */
+  overflow: hidden;
+}
