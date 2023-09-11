@@ -15,7 +15,7 @@ export class ValoracionComponent implements OnInit {
     this.get();
   }
 
-  //valoracion create
+  //valoracion create v2
 
   public get (){
     this.api.Get("valoracion");
