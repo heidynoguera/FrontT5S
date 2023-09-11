@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from 'src/app/services/rest.service';
 
 @Component({
-  selector: 'app-valoracion',
-  templateUrl: './valoracion.component.html',
-  styleUrls: ['./valoracion.component.css']
+  selector: 'app-repositorio',
+  templateUrl: './repositorio.component.html',
+  styleUrls: ['./repositorio.component.css']
 })
-export class ValoracionComponent implements OnInit {
-
+export class RepositorioComponent implements OnInit{
   constructor(public api: RestService){
 
   }
@@ -15,9 +14,7 @@ export class ValoracionComponent implements OnInit {
     this.get();
   }
 
-  //valoracion create v3
-
   public get (){
-    this.api.Get("valoracion");
+    this.api.Get("repositorio");
   }
 }

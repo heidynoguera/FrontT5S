@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ValoracionComponent } from './components/valoracion/valoracion.component';
 import { FormaPagoComponent } from './components/forma-pago/forma-pago.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { LoginComponent } from './components/login/login.component';
@@ -10,9 +9,9 @@ import { MateriaComponent } from './components/materia/materia.component';
 import { TutorMateriaComponent } from './components/tutor-materia/tutor-materia.component';
 import { GeografiaComponent } from './components/geografia/geografia.component';
 import { ReservarTutoriaComponent } from './components/reservar-tutoria/reservar-tutoria.component';
+import { RepositorioComponent } from './components/repositorio/repositorio.component';
 
 const routes: Routes = [
-  {path: "valoracion", component: ValoracionComponent},
   {path: "formapago", component: FormaPagoComponent},
   {path: "calendario", component: CalendarioComponent},
   {path: "login", component: LoginComponent},
@@ -22,6 +21,7 @@ const routes: Routes = [
   {path: "TutorMateria", component: TutorMateriaComponent},
   {path: "geografia", component: GeografiaComponent},
   {path: "reservaTutoria", component: ReservarTutoriaComponent},
+  {path: "repositorio", component: RepositorioComponent}
 
 ];
 

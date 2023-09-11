@@ -10,7 +10,6 @@ import { CalendarioComponent } from './components/calendario/calendario.componen
 import { GeografiaComponent } from './components/geografia/geografia.component';
 import { TutorMateriaComponent } from './components/tutor-materia/tutor-materia.component';
 import { FormaPagoComponent } from './components/forma-pago/forma-pago.component';
-import { ValoracionComponent } from './components/valoracion/valoracion.component';
 import { MateriaComponent } from './components/materia/materia.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './menu/menu.component';
@@ -22,6 +21,7 @@ import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { AvatarModule } from 'ngx-avatars';
 import { ReservarTutoriaComponent } from './components/reservar-tutoria/reservar-tutoria.component';
+import { RepositorioComponent } from './components/repositorio/repositorio.component';
 
 @NgModule({
   declarations: [
@@ -33,10 +33,10 @@ import { ReservarTutoriaComponent } from './components/reservar-tutoria/reservar
     GeografiaComponent,
     TutorMateriaComponent,
     FormaPagoComponent,
-    ValoracionComponent,
     MateriaComponent,
     MenuComponent,
     ReservarTutoriaComponent,
+    RepositorioComponent,
   ],
   imports: [
     BrowserModule,
