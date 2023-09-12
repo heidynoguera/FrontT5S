@@ -16,6 +16,6 @@ export class FormaPagoComponent implements OnInit{
   }
 
   public get (){
-    this.api.Get("forma-pago");
+    this.api.Get("FormaPagoes");
   }
 }

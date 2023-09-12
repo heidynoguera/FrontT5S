@@ -14,6 +14,6 @@ export class ReservarTutoriaComponent implements OnInit{
   }
 
   public get (){
-    this.api.Get("geografia");
+    this.api.Get("reservartutotiums");
   }
 }

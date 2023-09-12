@@ -16,6 +16,6 @@ export class LoginComponent implements OnInit{
   }
 
   public get (){
-    this.api.Get("estudiantes");
+    this.api.Get("logins");
   }
 }

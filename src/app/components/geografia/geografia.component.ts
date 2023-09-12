@@ -14,7 +14,7 @@ export class GeografiaComponent implements OnInit{
   }
 
   public get (){
-    this.api.Get("geografia");
+    this.api.Get("Geografiums");
   }
 
 }

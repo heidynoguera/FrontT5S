@@ -18,6 +18,6 @@ export class EstudianteComponent implements OnInit{
   }
 
   public get (){
-    this.api.Get("estudiantes");
+    this.api.Get("Estudiantes");
   }
 }

@@ -17,7 +17,7 @@ export class CalendarioComponent implements OnInit{
   }
 
   public get (){
-    this.api.Get("calendario");
+    this.api.Get("calendarios");
   }
 }
 
