@@ -17,6 +17,6 @@ export class MateriaComponent implements OnInit {
   }
 
   public get (){
-    this.api.Get("Materia");
+    this.api.Get("materiums");
   }
 }

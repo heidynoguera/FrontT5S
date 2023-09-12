@@ -16,6 +16,6 @@ export class TutorComponent implements OnInit{
     }
   
     public get (){
-      this.api.Get("Tutor");
+      this.api.Get("Tutors");
     }
 }
