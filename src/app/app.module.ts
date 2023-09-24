@@ -22,6 +22,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AvatarModule } from 'ngx-avatars';
 import { ReservarTutoriaComponent } from './components/reservar-tutoria/reservar-tutoria.component';
 import { RepositorioComponent } from './components/repositorio/repositorio.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
@@ -39,6 +45,11 @@ import { RepositorioComponent } from './components/repositorio/repositorio.compo
     RepositorioComponent,
   ],
   imports: [
+    MatInputModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
