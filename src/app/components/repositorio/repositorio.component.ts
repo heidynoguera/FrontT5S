@@ -15,6 +15,6 @@ export class RepositorioComponent implements OnInit{
   }
 
   public get (){
-    this.api.Get("repositorio");
+    this.api.Get("repositorios");
   }
 }
