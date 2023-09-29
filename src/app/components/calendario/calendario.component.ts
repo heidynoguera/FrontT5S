@@ -85,6 +85,16 @@ export class CalendarioComponent implements OnInit, AfterViewInit{
     this.api.Put("calendarios", idCalendario, newData);
   }
 
+  mostrarNotificacionDelete() {
+    // Verificar si el navegador soporta las notificaciones
+      alert("Delete")
+  }
+
+  mostrarNotificacionEdit() {
+    // Verificar si el navegador soporta las notificaciones
+      alert("Editar")
+  }
+
    //public async deleteCalendario(idCalendario: string) {
 
     //const response = await this.api.Delete("calendarios", "2");

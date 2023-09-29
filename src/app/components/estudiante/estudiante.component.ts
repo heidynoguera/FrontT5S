@@ -63,6 +63,7 @@ export class EstudianteComponent implements OnInit, AfterViewInit{
     for(let column in data[0]){
       this.displayedColumns.push(column)
     }
+    this.displayedColumns.push("Acciones")
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -89,6 +90,16 @@ export class EstudianteComponent implements OnInit, AfterViewInit{
 
     // Llama al método Put del servicio RestService.
     this.api.Put("estudiantes", idEstudiante, newData);
+  }
+
+  mostrarNotificacionDelete() {
+    // Verificar si el navegador soporta las notificaciones
+      alert("Delete")
+  }
+
+  mostrarNotificacionEdit() {
+    // Verificar si el navegador soporta las notificaciones
+      alert("Editar")
   }
 
  //public async deleteEstudiante(tutorId: string) {
