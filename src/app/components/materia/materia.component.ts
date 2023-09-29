@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
 import { RestService } from 'src/app/services/rest.service';
+import {ViewChild ,AfterViewInit, Component, OnInit } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -17,6 +20,6 @@ export class MateriaComponent implements OnInit {
   }
 
   public get (){
-    this.api.Get("Materia");
+    this.api.Get("materiums");
   }
 }
