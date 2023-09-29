@@ -41,6 +41,7 @@ export class GeografiaComponent implements OnInit ,AfterViewInit{
     for (let column in data[0]) {
       this.displayedColumns.push(column)
     }
+    this.displayedColumns.push("Acciones")
   }
 
   applyFilter(event: Event) {
@@ -68,5 +69,14 @@ export class GeografiaComponent implements OnInit ,AfterViewInit{
   //borrar datos
   public async deleteGeografia(IdGeografia: string) {
     const response = await this.api.Delete("Geografiums", IdGeografia);
+}
+mostrarNotificacionDelete() {
+  // Verificar si el navegador soporta las notificaciones
+    alert("Delete")
+}
+
+mostrarNotificacionEdit() {
+  // Verificar si el navegador soporta las notificaciones
+    alert("Editar")
 }
 }
