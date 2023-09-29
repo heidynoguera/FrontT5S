@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit, AfterViewInit{
     for(let column in data[0]){
       this.displayedColumns.push(column)
     }
+    this.displayedColumns.push("Acciones")
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -56,7 +57,15 @@ export class LoginComponent implements OnInit, AfterViewInit{
     }
   }
 
-  
+  mostrarNotificacionDelete() {
+    // Verificar si el navegador soporta las notificaciones
+      alert("Delete")
+  }
+
+  mostrarNotificacionEdit() {
+    // Verificar si el navegador soporta las notificaciones
+      alert("Editar")
+  }
  
   
 }
