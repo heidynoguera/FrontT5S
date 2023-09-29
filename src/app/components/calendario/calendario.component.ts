@@ -53,6 +53,7 @@ export class CalendarioComponent implements OnInit, AfterViewInit{
     for(let column in data[0]){
       this.displayedColumns.push(column)
     }
+    this.displayedColumns.push("Acciones")
   }
 
   ngAfterViewInit() {

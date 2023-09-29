@@ -51,6 +51,7 @@ export class FormaPagoComponent implements OnInit, AfterViewInit{
     for(let column in data[0]){
       this.displayedColumns.push(column)
     }
+    this.displayedColumns.push("Acciones")
   }
 
   ngAfterViewInit() {
@@ -80,6 +81,16 @@ export class FormaPagoComponent implements OnInit, AfterViewInit{
 
     // Llama al método Put del servicio RestService.
     this.api.Put("FormaPagoes", idPago, newData);
+  }
+
+  mostrarNotificacionDelete() {
+    // Verificar si el navegador soporta las notificaciones
+      alert("Delete")
+  }
+
+  mostrarNotificacionEdit() {
+    // Verificar si el navegador soporta las notificaciones
+      alert("Editar")
   }
 
    //public async deleteFormaPagoes(idPago: string) {
