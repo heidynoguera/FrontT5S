@@ -40,6 +40,7 @@ export class TutorComponent implements OnInit, AfterViewInit{
       for(let column in data[0]){
         this.displayedColumns.push(column)
       }
+      this.displayedColumns.push("Acciones")
       }
     
     applyFilter(event: Event) {
@@ -50,8 +51,23 @@ export class TutorComponent implements OnInit, AfterViewInit{
         
       }
       }
+      mostrarNotificacionDelete() {
+        // Verificar si el navegador soporta las notificaciones
+          alert("Delete")
+      }
+    
+      mostrarNotificacionEdit() {
+        // Verificar si el navegador soporta las notificaciones
+          alert("Editar")
+      }
+    
+       //public async deleteFormaPagoes(idPago: string) {
+    
+        //const response = await this.api.Delete("FormaPagoes", "2");
+      
+      //}
     }
-  
+    
   
     
      
