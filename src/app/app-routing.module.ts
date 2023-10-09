@@ -12,7 +12,6 @@ import { ReservarTutoriaComponent } from './components/reservar-tutoria/reservar
 import { RepositorioComponent } from './components/repositorio/repositorio.component';
 import { FormCalendarioComponent } from './Form/form-calendario/form-calendario.component';
 import { FormFormaPagoComponent } from './Form/form-forma-pago/form-forma-pago.component';
-import { FormGeografiaComponent } from './Form/form-geografia/form-geografia.component';
 
 const routes: Routes = [
   {path: "formapago", component: FormaPagoComponent},
@@ -27,7 +26,6 @@ const routes: Routes = [
   {path: "repositorio", component: RepositorioComponent},
   {path: "FormCalendario", component: FormCalendarioComponent},
   {path: "FormFormaPago", component: FormFormaPagoComponent},
-  {path: "FormGeografia", component: FormGeografiaComponent},
 
 ];
 
