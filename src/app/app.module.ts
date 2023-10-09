@@ -35,6 +35,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormFormaPagoComponent } from './Form/form-forma-pago/form-forma-pago.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { FormGeografiaComponent } from './Form/form-geografia/form-geografia.component';
+import { FormRepositorioComponent } from './Form/form-repositorio/form-repositorio.component';
+import { FormReservaTutoriaComponent } from './Form/form-reserva-tutoria/form-reserva-tutoria.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +55,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     RepositorioComponent,
     FormCalendarioComponent,
     FormFormaPagoComponent,
+    FormGeografiaComponent,
+    FormRepositorioComponent,
+    FormReservaTutoriaComponent,
   ],
   imports: [
     MatDatepickerModule,
