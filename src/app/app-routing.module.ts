@@ -25,7 +25,7 @@ const routes: Routes = [
   {path: "reservaTutoria", component: ReservarTutoriaComponent},
   {path: "repositorio", component: RepositorioComponent},
   {path: "FormCalendario", component: FormCalendarioComponent},
-  {path: "FormFormaPago", component: FormFormaPagoComponent}
+  {path: "FormFormaPago", component: FormFormaPagoComponent},
 
 ];
 
