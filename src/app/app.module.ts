@@ -27,6 +27,14 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { FormCalendarioComponent } from './Form/form-calendario/form-calendario.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormFormaPagoComponent } from './Form/form-forma-pago/form-forma-pago.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -42,8 +50,12 @@ import {MatInputModule} from '@angular/material/input';
     MenuComponent,
     ReservarTutoriaComponent,
     RepositorioComponent,
+    FormCalendarioComponent,
+    FormFormaPagoComponent,
   ],
   imports: [
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatInputModule,
     MatFormFieldModule,
     MatPaginatorModule,
@@ -58,7 +70,11 @@ import {MatInputModule} from '@angular/material/input';
     MatIconModule,
     MatListModule,
     HttpClientModule,
-    AvatarModule
+    AvatarModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

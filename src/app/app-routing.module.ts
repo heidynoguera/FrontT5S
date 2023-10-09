@@ -10,6 +10,8 @@ import { TutorMateriaComponent } from './components/tutor-materia/tutor-materia.
 import { GeografiaComponent } from './components/geografia/geografia.component';
 import { ReservarTutoriaComponent } from './components/reservar-tutoria/reservar-tutoria.component';
 import { RepositorioComponent } from './components/repositorio/repositorio.component';
+import { FormCalendarioComponent } from './Form/form-calendario/form-calendario.component';
+import { FormFormaPagoComponent } from './Form/form-forma-pago/form-forma-pago.component';
 
 const routes: Routes = [
   {path: "formapago", component: FormaPagoComponent},
@@ -21,7 +23,9 @@ const routes: Routes = [
   {path: "TutorMateria", component: TutorMateriaComponent},
   {path: "geografia", component: GeografiaComponent},
   {path: "reservaTutoria", component: ReservarTutoriaComponent},
-  {path: "repositorio", component: RepositorioComponent}
+  {path: "repositorio", component: RepositorioComponent},
+  {path: "FormCalendario", component: FormCalendarioComponent},
+  {path: "FormFormaPago", component: FormFormaPagoComponent}
 
 ];
 
