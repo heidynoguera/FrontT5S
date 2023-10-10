@@ -11,6 +11,9 @@ import { GeografiaComponent } from './components/geografia/geografia.component';
 import { ReservarTutoriaComponent } from './components/reservar-tutoria/reservar-tutoria.component';
 import { RepositorioComponent } from './components/repositorio/repositorio.component';
 import { FormGeografiaComponent } from './Form/form-geografia/form-geografia.component';
+import { FormPagoComponent } from './Form/form-pago/form-pago.component';
+import { FormCalendarioComponent } from './Form/form-calendario/form-calendario.component';
+
 
 
 const routes: Routes = [
@@ -25,6 +28,8 @@ const routes: Routes = [
   {path: "reservaTutoria", component: ReservarTutoriaComponent},
   {path: "repositorio", component: RepositorioComponent},
   {path: "FormGeografia", component: FormGeografiaComponent},
+  {path: "FormCalendario", component: FormPagoComponent},
+  {path: "FormFormaPago", component: FormCalendarioComponent},
 ];
 
 @NgModule({

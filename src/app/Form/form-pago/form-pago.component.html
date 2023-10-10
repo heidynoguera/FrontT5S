@@ -1,25 +1,25 @@
 <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
   <mat-card class="shipping-card">
     <mat-card-header>
-      <mat-card-title>Formulario Calendario</mat-card-title>
+      <mat-card-title>Informacion Forma de Pago</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Ex. 2023-09-10" formControlName="company">
+            <input matInput placeholder="Ex. Efectivo" formControlName="firstName">
+            <mat-error *ngIf="addressForm.controls['firstName'].hasError('required')">
+              Tipo de pago es <strong>Obligatorio</strong>
+            </mat-error>
           </mat-form-field>
-          <mat-error *ngIf="addressForm.controls['firstName'].hasError('required')">
-            Fecha es <strong>Obligatorio</strong>
-          </mat-error>
         </div>
       </div>
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Ex. Clase de programacion" formControlName="firstName">
-            <mat-error *ngIf="addressForm.controls['firstName'].hasError('required')">
-              Descripcion es <strong>Obligatorio</strong>
+            <textarea matInput placeholder="Ex. 150.000" formControlName="address"></textarea>
+            <mat-error *ngIf="addressForm.controls['address'].hasError('required')">
+              Valor es <strong>Obligatorio</strong>
             </mat-error>
           </mat-form-field>
         </div>
