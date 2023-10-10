@@ -5,11 +5,11 @@ import Swal from 'sweetalert2';
 
 
 @Component({
-  selector: 'app-form-calendario',
-  templateUrl: './form-calendario.component.html',
-  styleUrls: ['./form-calendario.component.css']
+  selector: 'app-form-pago',
+  templateUrl: './form-pago.component.html',
+  styleUrls: ['./form-pago.component.css']
 })
-export class FormCalendarioComponent {
+export class FormPagoComponent {
   private fb = inject(FormBuilder);
   addressForm = this.fb.group({
     company: null,

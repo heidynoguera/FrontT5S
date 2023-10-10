@@ -35,6 +35,8 @@ import { FormRepositorioComponent } from './Form/form-repositorio/form-repositor
 import { FormReservaTutoriaComponent } from './Form/form-reserva-tutoria/form-reserva-tutoria.component';
 import { FormGeografiaComponent } from './Form/form-geografia/form-geografia.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { FormPagoComponent } from './Form/form-pago/form-pago.component';
+import { FormCalendarioComponent } from './Form/form-calendario/form-calendario.component';
 
 
 @NgModule({
@@ -54,6 +56,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     FormGeografiaComponent,
     FormRepositorioComponent,
     FormReservaTutoriaComponent,
+    FormPagoComponent,
+    FormCalendarioComponent,
   ],
   imports: [
     MatNativeDateModule,

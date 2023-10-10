@@ -7,15 +7,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 
-import { FormFormaPagoComponent } from './form-forma-pago.component';
+import { FormPagoComponent } from './form-pago.component';
 
-describe('FormFormaPagoComponent', () => {
-  let component: FormFormaPagoComponent;
-  let fixture: ComponentFixture<FormFormaPagoComponent>;
+describe('FormPagoComponent', () => {
+  let component: FormPagoComponent;
+  let fixture: ComponentFixture<FormPagoComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [FormFormaPagoComponent],
+      declarations: [FormPagoComponent],
       imports: [
         NoopAnimationsModule,
         ReactiveFormsModule,
@@ -29,7 +29,7 @@ describe('FormFormaPagoComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormFormaPagoComponent);
+    fixture = TestBed.createComponent(FormPagoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
