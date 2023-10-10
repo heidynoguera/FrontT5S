@@ -33,6 +33,9 @@ import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormRepositorioComponent } from './Form/form-repositorio/form-repositorio.component';
 import { FormReservaTutoriaComponent } from './Form/form-reserva-tutoria/form-reserva-tutoria.component';
+import { FormGeografiaComponent } from './Form/form-geografia/form-geografia.component';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -53,7 +56,6 @@ import { FormReservaTutoriaComponent } from './Form/form-reserva-tutoria/form-re
     FormReservaTutoriaComponent,
   ],
   imports: [
-    MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
     MatFormFieldModule,
