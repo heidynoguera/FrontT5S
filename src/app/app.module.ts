@@ -27,7 +27,6 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import { FormGeografiaComponent } from './Form/form-geografia/form-geografia.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
@@ -54,6 +53,8 @@ import { FormReservaTutoriaComponent } from './Form/form-reserva-tutoria/form-re
     FormReservaTutoriaComponent,
   ],
   imports: [
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatInputModule,
     MatFormFieldModule,
     MatPaginatorModule,
