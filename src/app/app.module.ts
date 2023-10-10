@@ -31,8 +31,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { FormRepositorioComponent } from './Form/form-repositorio/form-repositorio.component';
+import { FormReservaTutoriaComponent } from './Form/form-reserva-tutoria/form-reserva-tutoria.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +48,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MenuComponent,
     ReservarTutoriaComponent,
     RepositorioComponent,
+    FormGeografiaComponent,
+    FormRepositorioComponent,
+    FormReservaTutoriaComponent,
   ],
   imports: [
     MatDatepickerModule,

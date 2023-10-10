@@ -10,6 +10,7 @@ import { TutorMateriaComponent } from './components/tutor-materia/tutor-materia.
 import { GeografiaComponent } from './components/geografia/geografia.component';
 import { ReservarTutoriaComponent } from './components/reservar-tutoria/reservar-tutoria.component';
 import { RepositorioComponent } from './components/repositorio/repositorio.component';
+import { FormGeografiaComponent } from './Form/form-geografia/form-geografia.component';
 
 const routes: Routes = [
   {path: "formapago", component: FormaPagoComponent},
