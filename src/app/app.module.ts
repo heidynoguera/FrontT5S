@@ -37,6 +37,7 @@ import { FormGeografiaComponent } from './Form/form-geografia/form-geografia.com
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormPagoComponent } from './Form/form-pago/form-pago.component';
 import { FormCalendarioComponent } from './Form/form-calendario/form-calendario.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -60,6 +61,8 @@ import { FormCalendarioComponent } from './Form/form-calendario/form-calendario.
     FormCalendarioComponent,
   ],
   imports: [
+    MatDialogModule,
+    MatButtonModule,
     MatNativeDateModule,
     MatInputModule,
     MatFormFieldModule,

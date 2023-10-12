@@ -3,6 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { RestService } from 'src/app/services/rest.service';
+import {MatDialog} from '@angular/material/dialog';
+import { FormGeografiaComponent } from 'src/app/Form/form-geografia/form-geografia.component';
 
 @Component({
   selector: 'app-geografia',
@@ -17,7 +19,7 @@ export class GeografiaComponent implements OnInit ,AfterViewInit{
   paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(public api: RestService) {
+  constructor(public api: RestService,public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -56,7 +58,14 @@ export class GeografiaComponent implements OnInit ,AfterViewInit{
   public get() {
     this.api.Get("Geografiums");
   }
-
+  openDialog() {
+    const dialogRef = this.dialog.open(FormGeografiaComponent);
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  
 //actualizar datos
   public putGeografia(idGeografia: number) { 
     const newData = { /* tus datos a actualizar */ };
@@ -79,4 +88,5 @@ mostrarNotificacionEdit() {
   // Verificar si el navegador soporta las notificaciones
     alert("Editar")
 }
+
 }
