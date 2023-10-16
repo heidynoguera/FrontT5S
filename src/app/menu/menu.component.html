@@ -1,30 +1,37 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container" style="background-color: #F9D58E;">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
+    <div>
     <mat-nav-list>
       <a mat-list-item href="/login">Login</a>
       <a mat-list-item href="/estudiantes">Estudiantes</a>
       <a mat-list-item href="/Tutor">Tutor</a>
       <a mat-list-item href="/calendario">Calendario</a>
-      <a mat-list-item href="/FormCalendario">Form Calendario</a>
+     <!--<a mat-list-item href="/FormCalendario">Form Calendario</a>-->
       <a mat-list-item href="/geografia">Geografia</a>
       <a mat-list-item href="/FormGeografia">FormGeografia</a>
       <a mat-list-item href="/reservaTutoria">Reservar Tutoria</a>
       <a mat-list-item href="/FormReservTuto">FormReservTuto</a>
       <a mat-list-item href="/TutorMateria">Tutor Materia</a>
       <a mat-list-item href="/formapago">Forma de Pago</a>
-      <a mat-list-item href="/FormFormaPago">Form Forma de Pago</a>
+      <!--<a mat-list-item href="/FormFormaPago">Form Forma de Pago</a>-->
       <a mat-list-item href="/repositorio">Repositorio</a>
       <a mat-list-item href="/FormRepositorio">FormRepositorio</a>
       <a mat-list-item href="/Materia">Materia</a>
+      <a mat-list-item href="/login" style="height: 60px;"><div class="avatar-container" style="width: 100%;
+        justify-content: center;
+        margin-top: -28px;">
+        <ngx-avatars name="T 5 S"></ngx-avatars>
+      </div></a>
     </mat-nav-list>
+  </div>
 <!--v8 -->
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar style="background: url(https://fcm.uncuyo.edu.ar/cache/emeceideaimagen-1024x684_999_750.png), orange;">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -33,10 +40,9 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>T5S</span>
-      <div class="avatar-container">
-        <ngx-avatars name="T 5 S"></ngx-avatars>
-      </div>
+      <span style="font-family: inherit;
+      font-size: 40px;
+      font-weight: 500;">T5S</span>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
