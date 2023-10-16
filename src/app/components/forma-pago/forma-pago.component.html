@@ -1,35 +1,51 @@
-<mat-form-field>
-  <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Efectivo" #input>
-</mat-form-field>
+<div style="display: inline-flex;">
+<div id="Titulo">F O R M A</div>  <div id="Titulo">  D E  </div>  <div id="Titulo">P A G O</div>
+</div>
+<div id="body">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Efectivo" #input>
+  </mat-form-field>
 
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
 
 
-    <div matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
-      <div *ngIf="column != 'Acciones'">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}</th>
-        <td mat-cell *matCellDef="let row">{{row[column]}}</td>
+      <div matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
+        <div *ngIf="column != 'Editar' && column !== 'Delete'">
+          <th id="tableHeader" mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}</th>
+          <td mat-cell *matCellDef="let row">{{row[column]}}</td>
+        </div>
+
+        <div *ngIf="column == 'Editar'">
+          <th  id="tableHeader" mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}</th>
+          <td id="icon" mat-cell *matCellDef="let row">
+            <a class="opcion" (click)="mostrarNotificacionEdit()"><mat-icon>edit</mat-icon></a>
+          </td>
+        </div>
+
+        <div *ngIf="column == 'Delete'">
+          <th id="tableHeader" mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}</th>
+          <td id="icon" mat-cell *matCellDef="let row">
+            <a class="opcion" (click)="mostrarNotificacionDelete()"><mat-icon>delete</mat-icon></a>
+          </td>
+        </div>
       </div>
 
-      <div *ngIf="column == 'Acciones'">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}</th>
-        <td mat-cell *matCellDef="let row">
-          <a class="opcion" (click)="mostrarNotificacionEdit()"><mat-icon>edit</mat-icon></a>
-          <a class="opcion" (click)="mostrarNotificacionDelete()"><mat-icon>delete</mat-icon></a>
-        </td>
-      </div>
-    </div>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
 
-    <!-- Row shown when there is no matching data. -->
-    <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-    </tr>
-  </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+</div>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+<div id="button">
+  <button mat-button (click)="openDialog()" class="beautiful-button">Nuevo
+  </button>
 </div>
