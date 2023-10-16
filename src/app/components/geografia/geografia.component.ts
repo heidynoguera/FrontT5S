@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { RestService } from 'src/app/services/rest.service';
 import {MatDialog} from '@angular/material/dialog';
 import { FormGeografiaComponent } from 'src/app/Form/form-geografia/form-geografia.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-geografia',
@@ -43,7 +44,7 @@ export class GeografiaComponent implements OnInit ,AfterViewInit{
     for (let column in data[0]) {
       this.displayedColumns.push(column)
     }
-    this.displayedColumns.push("Acciones")
+    this.displayedColumns.push("Editar", "Delete") 
   }
 
   applyFilter(event: Event) {
@@ -81,12 +82,40 @@ export class GeografiaComponent implements OnInit ,AfterViewInit{
 }
 mostrarNotificacionDelete() {
   // Verificar si el navegador soporta las notificaciones
-    alert("Delete")
+  Swal.fire({
+    title: '¿Esta seguro?',
+    text: "No podrás revertir esto",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si, Bórralo!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Borrado!',
+        'El elemento ha sido borrado.',
+        'success'
+      )
+    }
+  })
 }
 
 mostrarNotificacionEdit() {
   // Verificar si el navegador soporta las notificaciones
-    alert("Editar")
+  Swal.fire({
+    title: '¿Deseas guardar los cambios?',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: 'Guardar',
+    denyButtonText: `No Guardar`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      Swal.fire('Guardado!', '', 'success')
+    } else if (result.isDenied) {
+      Swal.fire('Los cambios no se han guardado', '', 'info')
+    }
+  })
 }
-
 }

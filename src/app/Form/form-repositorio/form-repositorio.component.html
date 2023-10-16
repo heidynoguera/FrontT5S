@@ -1,9 +1,9 @@
-<form [formGroup]="repositorioForm" novalidate (ngSubmit)="onSubmit()">
+<form [formGroup]="repositorioForm"  (ngSubmit)="onSubmit()">
   <mat-card class="shipping-card">
-    <mat-card-header>
+    <mat-card-header id="cardHeader">
       <mat-card-title>Formulario Repositorio</mat-card-title>
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content id="cardContent">    
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
@@ -26,7 +26,7 @@
     </div>  
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Enviar</button>
+      <button id="button" mat-raised-button color="primary" type="submit">Guardar</button>  
     </mat-card-actions>
   </mat-card>
 </form>

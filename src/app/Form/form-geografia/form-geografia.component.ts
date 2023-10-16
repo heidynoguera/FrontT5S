@@ -26,8 +26,8 @@ export class FormGeografiaComponent {
 
   onSubmit(): void {
     Swal.fire(
-      'good job',
-      'you clicked the button',
+      'Buen Trabajo!',
+      'Haz Terminado El Formulario!',
       'success'
     )
   }
