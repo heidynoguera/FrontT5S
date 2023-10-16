@@ -3,13 +3,15 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { RestService } from 'src/app/services/rest.service';
-
+import { MatDialog } from '@angular/material/dialog';
+import { FormRepositorioComponent } from 'src/app/Form/form-repositorio/form-repositorio.component';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-repositorio',
   templateUrl: './repositorio.component.html',
   styleUrls: ['./repositorio.component.css']
 })
-export class RepositorioComponent implements OnInit, AfterViewInit{
+export class RepositorioComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [];
   dataSource: MatTableDataSource<any>;
 
@@ -17,7 +19,7 @@ export class RepositorioComponent implements OnInit, AfterViewInit{
   paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(public api: RestService){
+  constructor(public api: RestService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource();
   }
   ngOnInit(): void {
@@ -30,7 +32,7 @@ export class RepositorioComponent implements OnInit, AfterViewInit{
     })
   }
 
-  ngAfterViewInit():void {
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -40,7 +42,7 @@ export class RepositorioComponent implements OnInit, AfterViewInit{
     for (let column in data[0]) {
       this.displayedColumns.push(column)
     }
-    this.displayedColumns.push("Acciones")
+    this.displayedColumns.push("Editar", "Delete") 
   }
 
   applyFilter(event: Event) {
@@ -56,26 +58,62 @@ export class RepositorioComponent implements OnInit, AfterViewInit{
     this.api.Get("Repositorios");
   }
 
-//actualizar datos
-  public putRepositorio(idRepositorio: number) { 
+  openDialog() {
+    const dialogRef = this.dialog.open(FormRepositorioComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  //actualizar datos
+  public putRepositorio(idRepositorio: number) {
     const newData = { /* tus datos a actualizar */ };
     this.api.Put("Repositorios", idRepositorio, newData);
   }
   //crear datos
-  public postRepositorio(newRepositorio : any) {
+  public postRepositorio(newRepositorio: any) {
     this.api.Post("Repositorios", newRepositorio);
   }
   //borrar datos
   public async deleteRepositorio(IdRepositorio: string) {
     const response = await this.api.Delete("Repositorios", IdRepositorio);
-}
-mostrarNotificacionDelete() {
-  // Verificar si el navegador soporta las notificaciones
-    alert("Delete")
-}
-
-mostrarNotificacionEdit() {
-  // Verificar si el navegador soporta las notificaciones
-    alert("Editar")
+  }
+  mostrarNotificacionDelete() {
+    // Verificar si el navegador soporta las notificaciones
+    Swal.fire({
+      title: '¿Esta seguro?',
+      text: "No podrás revertir esto",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Bórralo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Borrado!',
+          'El elemento ha sido borrado.',
+          'success'
+        )
+      }
+    })
+  }
+  
+  mostrarNotificacionEdit() {
+    // Verificar si el navegador soporta las notificaciones
+    Swal.fire({
+      title: '¿Deseas guardar los cambios?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Guardar',
+      denyButtonText: `No Guardar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('Guardado!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('Los cambios no se han guardado', '', 'info')
+      }
+    })
 }
 }
