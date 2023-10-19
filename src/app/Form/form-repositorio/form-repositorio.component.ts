@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 
 import { FormBuilder, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -22,9 +23,7 @@ export class FormRepositorioComponent {
 
   ];
 
-  onSubmit(): void {
-    alert('Thanks!');
-  }
+
   onFileSelected(event: any) {
     const ArchivoRepo = event.target.files[0]; // Obtiene el primer archivo seleccionado
 
@@ -33,6 +32,15 @@ export class FormRepositorioComponent {
       console.log('Archivo seleccionado:', ArchivoRepo);
 
       // Aquí puedes agregar la lógica adicional que necesites
+   
     }
+  }
+
+  onSubmit(): void {
+    Swal.fire(
+      'Buen Trabajo!',
+      'Haz Terminado El Formulario!',
+      'success'
+    )
   }
 }

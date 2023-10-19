@@ -1,10 +1,10 @@
 <form [formGroup]="geographyForm" (ngSubmit)="onSubmit()">
   <mat-card class="shipping-card">
-    <mat-card-header>
+    <mat-card-header id="cardHeader">
       <mat-card-title>Información Geografica</mat-card-title>
     </mat-card-header>
-    <mat-card-content>
-      <div class="row">
+    <mat-card-content id="cardContent">    
+       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
             <input matInput placeholder="Ciudad" formControlName="Ciudad">
@@ -25,7 +25,7 @@
      
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Enviar</button>
-    </mat-card-actions>
+      <button id="button" mat-raised-button color="primary" type="submit">Guardar</button>  
+      </mat-card-actions>
   </mat-card>
 </form>

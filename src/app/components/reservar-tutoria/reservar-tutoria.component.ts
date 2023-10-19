@@ -3,7 +3,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { RestService } from 'src/app/services/rest.service';
-
+import {MatDialog} from '@angular/material/dialog';
+import { FormReservaTutoriaComponent } from 'src/app/Form/form-reserva-tutoria/form-reserva-tutoria.component';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-reservar-tutoria',
   templateUrl: './reservar-tutoria.component.html',
@@ -16,8 +18,7 @@ export class ReservarTutoriaComponent implements OnInit, AfterViewInit{
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
-  constructor(public api: RestService){
+  constructor(public api: RestService,public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -41,7 +42,7 @@ export class ReservarTutoriaComponent implements OnInit, AfterViewInit{
     for (let column in data[0]) {
       this.displayedColumns.push(column)
     }
-    this.displayedColumns.push("Acciones")
+    this.displayedColumns.push("Editar", "Delete") 
   }
 
   applyFilter(event: Event) {
@@ -56,6 +57,14 @@ export class ReservarTutoriaComponent implements OnInit, AfterViewInit{
   public get (){
     this.api.Get("ResevarTutoriums");
   }
+  openDialog() {
+    const dialogRef = this.dialog.open(FormReservaTutoriaComponent);
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
   //actualizar datos
   public putReservTuto(idReserva: number) { 
     const newData = { /* tus datos a actualizar */ };
@@ -66,16 +75,52 @@ export class ReservarTutoriaComponent implements OnInit, AfterViewInit{
     this.api.Post("ResevarTutoriums", newReserva);
   }
   //borrar datos
+<<<<<<< HEAD
   //public async deleteReservTuto(idReserva: string) {
    // const response = await this.api.Delete("ResevarTutoriums", idReserva);
 //}
+=======
+  public async deleteReservTuto(idReserva: string) {
+    const response = await this.api.Delete("ResevarTutoriums", idReserva);
+}
+
+>>>>>>> f6259a50c92bfe444160e70c09b90f27fbedeb6e
 mostrarNotificacionDelete() {
   // Verificar si el navegador soporta las notificaciones
-    alert("Delete")
+  Swal.fire({
+    title: '¿Esta seguro?',
+    text: "No podrás revertir esto",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si, Bórralo!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Borrado!',
+        'El elemento ha sido borrado.',
+        'success'
+      )
+    }
+  })
 }
 
 mostrarNotificacionEdit() {
   // Verificar si el navegador soporta las notificaciones
-    alert("Editar")
+  Swal.fire({
+    title: '¿Deseas guardar los cambios?',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: 'Guardar',
+    denyButtonText: `No Guardar`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      Swal.fire('Guardado!', '', 'success')
+    } else if (result.isDenied) {
+      Swal.fire('Los cambios no se han guardado', '', 'info')
+    }
+  })
 }
 }

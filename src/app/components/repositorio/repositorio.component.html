@@ -1,21 +1,30 @@
+<div id="Titulo">R E P O S I T O R I O</div>
+<div id="body">
+
 <mat-form-field>
     <mat-label>Filtro</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ejemplo. Bogota" #input>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Prueba" #input>
   </mat-form-field>
   
   <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" matSort>
+    <table id="table" mat-table [dataSource]="dataSource" matSort>
   
       <div matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
-        <div *ngIf="column != 'Acciones'">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}</th>
+        <div *ngIf="column != 'Editar' && column !== 'Delete'">
+          <th id="tableHeader" mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}</th>
           <td mat-cell *matCellDef="let row">{{row[column]}}</td>
         </div>
   
-        <div *ngIf="column == 'Acciones'">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}</th>
-          <td mat-cell *matCellDef="let row">
+        <div *ngIf="column == 'Editar'">
+          <th id="tableHeader" mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}</th>
+          <td id="icon" mat-cell *matCellDef="let row">
             <a class="opcion" (click)="mostrarNotificacionEdit()"><mat-icon>edit</mat-icon></a>
+          </td>
+        </div>
+        
+        <div *ngIf="column == 'Delete'">
+          <th id="tableHeader" mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}</th>
+          <td  id="icon" mat-cell *matCellDef="let row">
             <a class="opcion" (click)="mostrarNotificacionDelete()"><mat-icon>delete</mat-icon></a>
           </td>
         </div>
@@ -32,3 +41,10 @@
   
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
+</div>
+<div id="button">
+  <button mat-button (click)="openDialog()" class="beautiful-button">Nuevo
+  </button>
+</div>
+  
+  
