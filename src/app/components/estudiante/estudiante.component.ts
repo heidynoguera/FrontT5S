@@ -1,5 +1,5 @@
 
-import { AfterViewInit, Component, OnInit,ViewChild  } from '@angular/core'; 
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,30 +11,31 @@ import { RestService } from 'src/app/services/rest.service';
   templateUrl: './estudiante.component.html',
   styleUrls: ['./estudiante.component.css']
 })
-export class EstudianteComponent implements OnInit, AfterViewInit{
+export class EstudianteComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = [];
   dataSource: MatTableDataSource<any>;
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  
 
-  constructor(public api: RestService){
-        this.dataSource = new MatTableDataSource();
+  constructor(public api: RestService) {
+    this.dataSource = new MatTableDataSource();
 
 
   }
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     //this.get();
 
-    this.api.Get("estudiantes").then((res)=>{
+    this.api.Get("estudiantes").then((res) => {
 
-      for(let index = 0; index < res.length; index++){
+      for (let index = 0; index < res.length; index++) {
         this.loadTable([res[index]])
       }
 
-      this.dataSource.data= res;
+      this.dataSource.data = res;
 
     })
 
@@ -58,9 +59,9 @@ export class EstudianteComponent implements OnInit, AfterViewInit{
     // this.crearEstudiante(nuevoEstudiante);
   }
 
-  loadTable(data:any[]){
-    this.displayedColumns=[];
-    for(let column in data[0]){
+  loadTable(data: any[]) {
+    this.displayedColumns = [];
+    for (let column in data[0]) {
       this.displayedColumns.push(column)
     }
     this.displayedColumns.push("Acciones")
@@ -77,15 +78,15 @@ export class EstudianteComponent implements OnInit, AfterViewInit{
     }
   }
 
-  public crearEstudiante(nuevoEstudiante : any) {
+  public crearEstudiante(nuevoEstudiante: any) {
     this.api.Post("estudiantes", nuevoEstudiante);
   }
 
-  public get (){
+  public get() {
     this.api.Get("Estudiantes");
   }
 
-  public actualizarEstudiante(idEstudiante: number) { 
+  public actualizarEstudiante(idEstudiante: number) {
     const newData = { /* tus datos a actualizar */ };
 
     // Llama al método Put del servicio RestService.
@@ -94,18 +95,18 @@ export class EstudianteComponent implements OnInit, AfterViewInit{
 
   mostrarNotificacionDelete() {
     // Verificar si el navegador soporta las notificaciones
-      alert("Delete")
+    alert("Delete")
   }
 
   mostrarNotificacionEdit() {
     // Verificar si el navegador soporta las notificaciones
-      alert("Editar")
+    alert("Editar")
   }
 
- //public async deleteEstudiante(tutorId: string) {
+  //public async deleteEstudiante(tutorId: string) {
 
-    //const response = await this.api.Delete("estudiantes", "2");
-  
+  //const response = await this.api.Delete("estudiantes", "2");
+
   //}
 
 }

@@ -16,8 +16,7 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}</th>
           <td mat-cell *matCellDef="let row">
             <a class="opcion" (click)="mostrarNotificacionEdit()"><mat-icon>edit</mat-icon></a>
-            <a class="opcion" (click)="mostrarNotificacionDelete()"><mat-icon>delete</mat-icon></a>
-          </td>
+            <a class="opcion" (click)="eliminarLogin(row.id)"><mat-icon>delete</mat-icon></a>          </td>
         </div>
       </div>
       

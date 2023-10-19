@@ -1,0 +1,32 @@
+<form [formGroup]="repositorioForm"  (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header id="cardHeader">
+      <mat-card-title>Formulario Repositorio</mat-card-title>
+    </mat-card-header>
+    <mat-card-content id="cardContent">    
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nombre Repositorio" formControlName="NombreRepo">
+            <mat-error *ngIf="repositorioForm.controls['NombreRepo'].hasError('required')">
+            Nombre es <strong>Obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>       
+      </div>   
+      <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <input  type="file" (change)="onFileSelected($event)" formControlName="ArchivoRepo" accept=".pdf, .doc, .docx">
+          <mat-error *ngIf="repositorioForm.controls['ArchivoRepo'].hasError('required')">
+            Archivo es <strong>Obligatorio</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>  
+    </mat-card-content>
+    <mat-card-actions>
+      <button id="button" mat-raised-button color="primary" type="submit">Guardar</button>  
+    </mat-card-actions>
+  </mat-card>
+</form>

@@ -1,0 +1,85 @@
+<form [formGroup]="tutoriaForm" (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header id="cardHeader">
+      <mat-card-title>Formulario Reserva Tutoria</mat-card-title>
+    </mat-card-header>
+    <mat-card-content id="cardContent">    
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput type="date" placeholder="Fecha Tutoria" formControlName="fechaTutoria">
+            <mat-error *ngIf="tutoriaForm.controls['fechaTutoria'].hasError('required')">
+              Fecha Tutoria es <strong>obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput type="time" placeholder="Hora Tutoria" formControlName="horaTutoria">
+            <mat-error *ngIf="tutoriaForm.controls['horaTutoria'].hasError('required')">
+              Hora Tutoria es <strong>obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Cantidad de Horas" formControlName="cantidadHoras">
+            <mat-error *ngIf="tutoriaForm.controls['cantidadHoras'].hasError('required')">
+              Cantidad de Horas es <strong>obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Localidad" formControlName="localidad">
+            <mat-error *ngIf="tutoriaForm.controls['localidad'].hasError('required')">
+              localidad es <strong>obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Barrio" formControlName="barrio">
+            <mat-error *ngIf="tutoriaForm.controls['barrio'].hasError('required')">
+              Barrio es <strong>obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Dirección Tutoria" formControlName="direccionTutoria"></textarea>
+            <mat-error *ngIf="tutoriaForm.controls['direccionTutoria'].hasError('required')">
+              Dirección Tutoria es <strong>obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Tipo Tutoria" formControlName="tipoTutoria">
+            <mat-error *ngIf="tutoriaForm.controls['tipoTutoria'].hasError('required')">
+              Tipo Tutoria es <strong>obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Descripción Tutoria" formControlName="descripcionTutoria"></textarea>
+            <mat-error *ngIf="tutoriaForm.controls['descripcionTutoria'].hasError('required')">
+              Descripción Tutoria es <strong>obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+  
+    </mat-card-content>
+    <mat-card-actions>
+      <button id="button" mat-raised-button color="primary" type="submit">Guardar</button>  
+    </mat-card-actions>
+  </mat-card>
+</form>

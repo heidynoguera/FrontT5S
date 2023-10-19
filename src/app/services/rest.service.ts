@@ -35,8 +35,20 @@ export class RestService {
     });
   }
 
-  public async Delete(controller: string, id: string) {
+  public async Delete(controller: string, id: number) {
     const url = `${this.URL}${controller}/${id}`;
+  
+    try {
+      const response = await this.api.delete(url).toPromise();
+      console.log(response);
+    } catch (error) {
+      console.error('Error al eliminar el registro:', error);
+      // Aquí puedes manejar el error, mostrar un mensaje de error, etc.
+    }
   }
+  
+  
 
+ 
+  
 }

@@ -1,0 +1,35 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header id="cardHeader">
+      <mat-card-title id="Title">Formulario Calendario</mat-card-title>
+    </mat-card-header>
+    <mat-card-content id="cardContent">
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label id="labelC" for="fecha">Fecha de la Tutoria</mat-label>
+            <input matInput placeholder="Ex. 2023-09-10" formControlName="firstName">
+            <mat-error *ngIf="addressForm.controls['firstName'].hasError('required')">
+              Fecha es <strong>Obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label id="labelC" for="fecha">Descripcion de la Tutoria</mat-label>
+            <input matInput placeholder="Ex. Clase de programacion" formControlName="lastName">
+            <mat-error *ngIf="addressForm.controls['lastName'].hasError('required')">
+              Descripcion es <strong>Obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button id="button" mat-raised-button color="primary" type="submit">Guardar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

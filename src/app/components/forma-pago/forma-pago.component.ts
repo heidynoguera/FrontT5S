@@ -1,8 +1,11 @@
 import { AfterViewInit ,Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { FormPagoComponent } from 'src/app/Form/form-pago/form-pago.component';
 import { RestService } from 'src/app/services/rest.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-forma-pago',
@@ -18,7 +21,7 @@ export class FormaPagoComponent implements OnInit, AfterViewInit{
   paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort; 
 
-  constructor(public api: RestService){
+  constructor(public api: RestService, public dialog: MatDialog){
 
     this.dataSource = new MatTableDataSource();
 
@@ -46,12 +49,16 @@ export class FormaPagoComponent implements OnInit, AfterViewInit{
 
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(FormPagoComponent);
+  }
+
   loadTable(data:any[]){
     this.displayedColumns=[];
     for(let column in data[0]){
       this.displayedColumns.push(column)
     }
-    this.displayedColumns.push("Acciones")
+    this.displayedColumns.push("Editar", "Delete")
   }
 
   ngAfterViewInit() {
@@ -85,12 +92,41 @@ export class FormaPagoComponent implements OnInit, AfterViewInit{
 
   mostrarNotificacionDelete() {
     // Verificar si el navegador soporta las notificaciones
-      alert("Delete")
+    Swal.fire({
+      title: '¿Esta seguro?',
+      text: "No podrás revertir esto",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Bórralo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Borrado!',
+          'El elemento ha sido borrado.',
+          'success'
+        )
+      }
+    })
   }
 
   mostrarNotificacionEdit() {
     // Verificar si el navegador soporta las notificaciones
-      alert("Editar")
+    Swal.fire({
+      title: '¿Deseas guardar los cambios?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Guardar',
+      denyButtonText: `No Guardar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('Guardado!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('Los cambios no se han guardado', '', 'info')
+      }
+    })
   }
 
    //public async deleteFormaPagoes(idPago: string) {
