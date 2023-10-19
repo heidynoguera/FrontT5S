@@ -1,0 +1,128 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Registro Tutor</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+     
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nombres" formControlName="firstName">
+            <mat-error *ngIf="addressForm.controls['firstName'].hasError('required')">
+              El nombre es <strong>obligatorio</strong>
+            </mat-error>
+          <mat-error *ngIf="addressForm.controls['firstName'].hasError('pattern')">
+            El nombre solo deben contener letras
+          </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Apellidos" formControlName="lastName">
+            <mat-error *ngIf="addressForm.controls['lastName'].hasError('required')">
+              El apellido es <strong>obligatorio</strong>
+            </mat-error>
+            <mat-error *ngIf="addressForm.controls['lastName'].hasError('pattern')">
+              El apellido solo deben contener letras
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Tipo de documento" formControlName="state">
+            <mat-option *ngFor="let state of states" [value]="state.abbreviation">
+              {{ state.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="addressForm.controls['state'].hasError('required')">
+            El tipo de documento es <strong>obligatorio</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #postalCode maxlength="5" placeholder="Número documento" type="number" formControlName="postalCode">
+            <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+            <mat-error *ngIf="addressForm.controls['state'].hasError('required')">
+              El número de documento es <strong>obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #postalCode maxlength="5" placeholder="Celular" type="number" formControlName="postalCode">
+            <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+            <mat-error *ngIf="addressForm.controls['state'].hasError('required')">
+              El número de celular es <strong>obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+          
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Dirección" formControlName="address"></textarea>
+            <mat-error *ngIf="addressForm.controls['address'].hasError('required')">
+              La dirección es <strong>obligatoria</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row" *ngIf="!hasUnitNumber">
+        <div class="col">
+          <button mat-button type="button" (click)="hasUnitNumber = !hasUnitNumber">
+            + Agregar Apt, Casa, Torre
+          </button>
+        </div>
+      </div>
+      <div class="row" *ngIf="hasUnitNumber">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Complemento    " formControlName="address2"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Correo" formControlName="city">
+            <mat-error *ngIf="addressForm.controls['city'].hasError('required')">
+              El correo es <strong>obligatorio</strong>
+            </mat-error>
+            <mat-error *ngIf="addressForm.controls['city'].hasError('pattern')">
+              Formato de correo invalido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Años de experiencia" formControlName="experiencia">
+              <mat-option *ngFor="let experiencia of experiencia" [value]="experiencia.abbreviation">
+                {{ experiencia.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['state'].hasError('required')">
+              Años de experiencia requeridos <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Envíar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
