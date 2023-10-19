@@ -38,6 +38,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { FormPagoComponent } from './Form/form-pago/form-pago.component';
 import { FormCalendarioComponent } from './Form/form-calendario/form-calendario.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { FormEstudiantesComponent } from './Form/form-estudiantes/form-estudiantes.component';
+import { FormLoginComponent } from './Form/form-login/form-login.component';
 
 
 @NgModule({
@@ -59,6 +61,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     FormReservaTutoriaComponent,
     FormPagoComponent,
     FormCalendarioComponent,
+    FormEstudiantesComponent,
+    FormLoginComponent,
   ],
   imports: [
     MatDialogModule,

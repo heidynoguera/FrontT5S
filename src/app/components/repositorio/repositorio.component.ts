@@ -66,9 +66,9 @@ export class RepositorioComponent implements OnInit, AfterViewInit{
     this.api.Post("Repositorios", newRepositorio);
   }
   //borrar datos
-  public async deleteRepositorio(IdRepositorio: string) {
-    const response = await this.api.Delete("Repositorios", IdRepositorio);
-}
+ // public async deleteRepositorio(IdRepositorio: string) {
+  //  const response = await this.api.Delete("Repositorios", IdRepositorio);
+//}
 mostrarNotificacionDelete() {
   // Verificar si el navegador soporta las notificaciones
     alert("Delete")

@@ -15,6 +15,8 @@ import { FormPagoComponent } from './Form/form-pago/form-pago.component';
 import { FormCalendarioComponent } from './Form/form-calendario/form-calendario.component';
 import { FormReservaTutoriaComponent } from './Form/form-reserva-tutoria/form-reserva-tutoria.component';
 import { FormRepositorioComponent } from './Form/form-repositorio/form-repositorio.component';
+import { FormEstudiantesComponent } from './Form/form-estudiantes/form-estudiantes.component';
+import { FormLoginComponent } from './Form/form-login/form-login.component';
 
 
 
@@ -34,6 +36,8 @@ const routes: Routes = [
   {path: "FormFormaPago", component: FormCalendarioComponent},
   {path: "FormReservTuto", component: FormReservaTutoriaComponent},
   {path: "FormRepositorio", component: FormRepositorioComponent},
+  {path: "FormEstudiantes", component: FormEstudiantesComponent},
+  {path: "FormLogin", component: FormLoginComponent},
 ];
 
 @NgModule({

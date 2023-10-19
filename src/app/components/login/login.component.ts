@@ -66,7 +66,18 @@ export class LoginComponent implements OnInit, AfterViewInit{
     // Verificar si el navegador soporta las notificaciones
       alert("Editar")
   }
- 
+  eliminarLogin(id: number) {
+    if (confirm('¿Seguro que deseas eliminar este registro?')) {
+      // Realizar la solicitud HTTP DELETE al servidor
+      this.api.Delete("logins", id).then((res) => {
+        // Aquí puedes manejar la respuesta del servidor si es necesario
+        // Recargar la tabla o realizar cualquier otra acción después de eliminar
+        alert("Registro eliminado exitosamente.");
+        this.get(); // Actualiza la tabla después de eliminar
+      });
+    }
+  }
+  
   
 }
 

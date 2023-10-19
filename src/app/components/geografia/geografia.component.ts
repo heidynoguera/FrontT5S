@@ -76,9 +76,9 @@ export class GeografiaComponent implements OnInit ,AfterViewInit{
     this.api.Post("Geografiums", newGeografia);
   }
   //borrar datos
-  public async deleteGeografia(IdGeografia: string) {
-    const response = await this.api.Delete("Geografiums", IdGeografia);
-}
+  //public async deleteGeografia(IdGeografia: string) {
+ //   const response = await this.api.Delete("Geografiums", IdGeografia);
+//}
 mostrarNotificacionDelete() {
   // Verificar si el navegador soporta las notificaciones
     alert("Delete")
