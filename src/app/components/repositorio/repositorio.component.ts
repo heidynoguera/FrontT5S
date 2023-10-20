@@ -75,20 +75,7 @@ export class RepositorioComponent implements OnInit, AfterViewInit {
     this.api.Post("Repositorios", newRepositorio);
   }
   //borrar datos
-<<<<<<< HEAD
- // public async deleteRepositorio(IdRepositorio: string) {
-  //  const response = await this.api.Delete("Repositorios", IdRepositorio);
-//}
-mostrarNotificacionDelete() {
-  // Verificar si el navegador soporta las notificaciones
-    alert("Delete")
-}
-
-mostrarNotificacionEdit() {
-  // Verificar si el navegador soporta las notificaciones
-    alert("Editar")
-=======
-  public async deleteRepositorio(IdRepositorio: string) {
+  public async deleteRepositorio(IdRepositorio: any) {
     const response = await this.api.Delete("Repositorios", IdRepositorio);
   }
   mostrarNotificacionDelete() {
@@ -128,6 +115,5 @@ mostrarNotificacionEdit() {
         Swal.fire('Los cambios no se han guardado', '', 'info')
       }
     })
->>>>>>> f6259a50c92bfe444160e70c09b90f27fbedeb6e
 }
 }

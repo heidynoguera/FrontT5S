@@ -75,16 +75,10 @@ export class ReservarTutoriaComponent implements OnInit, AfterViewInit{
     this.api.Post("ResevarTutoriums", newReserva);
   }
   //borrar datos
-<<<<<<< HEAD
-  //public async deleteReservTuto(idReserva: string) {
-   // const response = await this.api.Delete("ResevarTutoriums", idReserva);
-//}
-=======
-  public async deleteReservTuto(idReserva: string) {
+  public async deleteReservTuto(idReserva: any) {
     const response = await this.api.Delete("ResevarTutoriums", idReserva);
 }
 
->>>>>>> f6259a50c92bfe444160e70c09b90f27fbedeb6e
 mostrarNotificacionDelete() {
   // Verificar si el navegador soporta las notificaciones
   Swal.fire({
