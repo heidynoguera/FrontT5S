@@ -40,6 +40,7 @@ import { FormCalendarioComponent } from './Form/form-calendario/form-calendario.
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormEstudiantesComponent } from './Form/form-estudiantes/form-estudiantes.component';
 import { FormLoginComponent } from './Form/form-login/form-login.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import { FormLoginComponent } from './Form/form-login/form-login.component';
     FormLoginComponent,
   ],
   imports: [
+    MatProgressSpinnerModule,
     MatDialogModule,
     MatButtonModule,
     MatNativeDateModule,

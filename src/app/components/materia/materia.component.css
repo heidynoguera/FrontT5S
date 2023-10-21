@@ -10,3 +10,11 @@ table {
   td, th {
     width: 25%;
   }
+
+  .mat-row {
+    text-align: -webkit-center;
+  }
+  
+  .mat-mdc-progress-spinner{
+    --mdc-circular-progress-active-indicator-color: white;
+  }

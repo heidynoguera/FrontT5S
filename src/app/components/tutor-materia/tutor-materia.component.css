@@ -1,12 +1,21 @@
 table {
-    width: 100%;
-  }
-  
-  .mat-mdc-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
-  
-  td, th {
-    width: 25%;
-  }
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25%;
+}
+
+.mat-row {
+  text-align: -webkit-center;
+}
+
+.mat-mdc-progress-spinner{
+  --mdc-circular-progress-active-indicator-color: white;
+}

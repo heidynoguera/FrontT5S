@@ -1,4 +1,4 @@
-<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+<form [formGroup]="calendarioForm" novalidate (ngSubmit)="onSubmit()">
   <mat-card class="shipping-card">
     <mat-card-header id="cardHeader">
       <mat-card-title id="Title">Formulario Calendario</mat-card-title>
@@ -9,7 +9,7 @@
           <mat-form-field class="full-width">
             <mat-label id="labelC" for="fecha">Fecha de la Tutoria</mat-label>
             <input matInput placeholder="Ex. 2023-09-10" formControlName="firstName">
-            <mat-error *ngIf="addressForm.controls['firstName'].hasError('required')">
+            <mat-error *ngIf="calendarioForm.controls['firstName'].hasError('required')">
               Fecha es <strong>Obligatorio</strong>
             </mat-error>
           </mat-form-field>
@@ -20,7 +20,7 @@
           <mat-form-field class="full-width">
             <mat-label id="labelC" for="fecha">Descripcion de la Tutoria</mat-label>
             <input matInput placeholder="Ex. Clase de programacion" formControlName="lastName">
-            <mat-error *ngIf="addressForm.controls['lastName'].hasError('required')">
+            <mat-error *ngIf="calendarioForm.controls['lastName'].hasError('required')">
               Descripcion es <strong>Obligatorio</strong>
             </mat-error>
           </mat-form-field>

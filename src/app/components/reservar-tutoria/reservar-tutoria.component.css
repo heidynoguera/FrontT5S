@@ -155,3 +155,24 @@ button:hover {
   padding: 10px;
   background-color: #F9D58E;
 }
+
+#iconEdit{
+  color: #ffa500;
+}
+
+#iconEdit:hover{
+  color: rgb(123, 123, 235);
+}
+
+#iconDelete{
+  color: #ffa500;
+}
+
+#iconDelete:hover{
+  color: red;
+}
+
+.scrollable-container {
+  max-height: 400px; /* Ajusta esta altura máxima según tus necesidades */
+  overflow-y: auto;
+}

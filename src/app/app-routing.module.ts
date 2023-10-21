@@ -31,13 +31,6 @@ const routes: Routes = [
   {path: "geografia", component: GeografiaComponent},
   {path: "reservaTutoria", component: ReservarTutoriaComponent},
   {path: "repositorio", component: RepositorioComponent},
-  {path: "FormGeografia", component: FormGeografiaComponent},
-  {path: "FormCalendario", component: FormPagoComponent},
-  {path: "FormFormaPago", component: FormCalendarioComponent},
-  {path: "FormReservTuto", component: FormReservaTutoriaComponent},
-  {path: "FormRepositorio", component: FormRepositorioComponent},
-  {path: "FormEstudiantes", component: FormEstudiantesComponent},
-  {path: "FormLogin", component: FormLoginComponent},
 ];
 
 @NgModule({

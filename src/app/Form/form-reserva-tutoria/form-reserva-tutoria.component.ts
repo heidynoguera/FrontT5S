@@ -36,10 +36,18 @@ export class FormReservaTutoriaComponent {
   ];
 
   onSubmit(): void {
+    if (this.tutoriaForm.valid) {
     Swal.fire(
       'Buen Trabajo!',
       'Haz Terminado El Formulario!',
       'success'
     )
+    }else{
+      Swal.fire(
+        'Por favor llenar todos los campos!',
+        'Error en el Formulario!',
+        'error'
+      )
+    }
   }
 }

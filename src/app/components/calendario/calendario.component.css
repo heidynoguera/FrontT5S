@@ -84,7 +84,7 @@ th {
 }
 
 button {
-  --primary-color: #424242;
+  --primary-color: #ffa500;
   --secondary-color: #fff;
   --hover-color: #111;
   --arrow-width: 10px;
@@ -154,4 +154,28 @@ button:hover {
 #body {
   padding: 10px;
   background-color: #F9D58E;
+}
+
+#iconEdit{
+  color: #ffa500;
+}
+
+#iconEdit:hover{
+  color: rgb(123, 123, 235);
+}
+
+#iconDelete{
+  color: #ffa500;
+}
+
+#iconDelete:hover{
+  color: red;
+}
+
+.mat-row {
+  text-align: -webkit-center;
+}
+
+.mat-mdc-progress-spinner{
+  --mdc-circular-progress-active-indicator-color: white;
 }
