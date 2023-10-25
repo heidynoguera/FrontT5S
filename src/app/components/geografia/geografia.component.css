@@ -42,7 +42,7 @@ tr.mat-header-row {
 
 /* Estilos para las filas de datos */
 tr.mat-row {
-  background-color: #f9f9f9;
+  background-color: #424242;
 }
 
 /* Estilos para las celdas de acciones */
@@ -154,4 +154,28 @@ button:hover {
 #body {
   padding: 10px;
   background-color: #F9D58E;
+}
+
+#iconEdit{
+  color: #ffa500;
+}
+
+#iconEdit:hover{
+  color: rgb(123, 123, 235);
+}
+
+#iconDelete{
+  color: #ffa500;
+}
+
+#iconDelete:hover{
+  color: red;
+}
+
+.mat-row {
+  text-align: -webkit-center;
+}
+
+.mat-mdc-progress-spinner{
+  --mdc-circular-progress-active-indicator-color: white;
 }
