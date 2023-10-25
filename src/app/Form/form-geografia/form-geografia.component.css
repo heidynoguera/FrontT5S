@@ -26,9 +26,13 @@
   margin-right: 0;
 }
 
-mat-card-title {
-  color: white; /* Cambia "red" al color que desees */
-}
+/*#Title{
+  color: aliceblue;
+  font-weight: 800;
+  font-size: 2em;
+  font-family: 'Roboto';
+}*/
+
 #Title{
   font-size: 28px;
   font-weight: 600;

@@ -37,10 +37,18 @@ export class FormRepositorioComponent {
   }
 
   onSubmit(): void {
+    if (this.repositorioForm.valid) {
     Swal.fire(
       'Buen Trabajo!',
       'Haz Terminado El Formulario!',
       'success'
     )
+    }else{
+      Swal.fire(
+        'Por favor llenar todos los campos!',
+        'Error en el Formulario!',
+        'error'
+      )
+    }
   }
 }

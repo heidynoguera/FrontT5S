@@ -25,10 +25,18 @@ export class FormGeografiaComponent {
   ];
 
   onSubmit(): void {
+    if (this.geographyForm.valid) {
     Swal.fire(
       'Buen Trabajo!',
       'Haz Terminado El Formulario!',
       'success'
     )
+    }else{
+      Swal.fire(
+        'Por favor llenar todos los campos!',
+        'Error en el Formulario!',
+        'error'
+      )
+    }
   }
 }
