@@ -47,7 +47,7 @@ export class EstudianteComponent implements OnInit, AfterViewInit {
     //   tipoPago: "cheque",
     //   valoraPagar: 1000000
     // };
-
+    //andreaaa
     // this.crearFormaPago(nuevoFormaPago)
 
   }
