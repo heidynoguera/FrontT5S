@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 
 import { FormBuilder, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -20,11 +21,8 @@ export class FormEstudiantesComponent {
     Correo: [null, Validators.required],
     Direccion: [null, Validators.required],
     NombreUsuario: [null, Validators.required],
-    password: [null, Validators.required],
-    postalCode: [null, Validators.compose([
-      Validators.required, Validators.minLength(5), Validators.maxLength(5)])
-    ],
-    shipping: ['free', Validators.required]
+    password: [null, Validators.required]     
+    
   });
 
   hasUnitNumber = false;
@@ -39,7 +37,20 @@ export class FormEstudiantesComponent {
 
   
 
+  
   onSubmit(): void {
-    alert('Thanks!');
+    if (this.addressForm.valid) {
+    Swal.fire(
+      'Buen Trabajo!',
+      'Haz Terminado El Formulario!',
+      'success'
+    )
+    }else{
+      Swal.fire(
+        'Por favor llenar todos los campos!',
+        'Error en el Formulario!',
+        'error'
+      )
+    }
   }
 }

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 
 import { FormBuilder, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -11,17 +12,28 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class FormLoginComponent {
   private fb = inject(FormBuilder);
   addressForm = this.fb.group({
-    company: null,
-    User: [null, Validators.required],
-    Password: [null, Validators.required],
    
-    shipping: ['free', Validators.required]
-  });
+    User: [null, Validators.required],
+    Password: [null, Validators.required]
+   
+     });
 
   hasUnitNumber = false;
 
 
   onSubmit(): void {
-    alert('Thanks!');
+    if (this.addressForm.valid) {
+    Swal.fire(
+      'Buen Trabajo!',
+      'Haz Terminado El Formulario!',
+      'success'
+    )
+    }else{
+      Swal.fire(
+        'Por favor llenar todos los campos!',
+        'Error en el Formulario!',
+        'error'
+      )
+    }
   }
 }
