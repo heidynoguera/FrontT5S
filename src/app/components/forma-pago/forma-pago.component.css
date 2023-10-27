@@ -171,3 +171,11 @@ button:hover {
 #iconDelete:hover{
   color: red;
 }
+
+.mat-row {
+  text-align: -webkit-center;
+}
+
+.mat-mdc-progress-spinner{
+  --mdc-circular-progress-active-indicator-color: white;
+}

@@ -1,24 +1,26 @@
 <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
   <mat-card class="shipping-card">
-    <mat-card-header>
-      <mat-card-title>Informacion estudiantes</mat-card-title>
+    <mat-card-header id="cardHeader">
+      <mat-card-title id="Title">Formulario Estudiante</mat-card-title>
     </mat-card-header>
     
-    <mat-card-content>
+    <mat-card-content id="cardContent">
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Apellidos" formControlName="Apellidos">
+            <mat-label id="labelC" for="Apellidos">Apellidos</mat-label>
+            <input id="labelC" matInput placeholder="Perez" formControlName="Apellidos">
             <mat-error *ngIf="addressForm.controls['Apellidos'].hasError('required')">
-              Apellidos <strong>required</strong>
+              Apellidos <strong>obligatorio</strong>
             </mat-error>
           </mat-form-field>
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Nombres" formControlName="Nombres">
+            <mat-label id="labelC" for="Nombres">Nombres</mat-label>
+             <input matInput id="labelC"placeholder="Pepe" formControlName="Nombres">
             <mat-error *ngIf="addressForm.controls['Nombres'].hasError('required')">
-              Nombres <strong>required</strong>
+              Nombres <strong>obligatorio</strong>
             </mat-error>
           </mat-form-field>
         </div>
@@ -26,20 +28,22 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <mat-select placeholder=" Tipo Documento" formControlName="documentType">
+            <mat-label id="labelC" for="Tipo Documento">Tipo Documento</mat-label>
+            <mat-select placeholder="Cedula Ciudadania" formControlName="documentType">
               <mat-option *ngFor="let doc of Documento" [value]="doc.abbreviation">{{ doc.name }}</mat-option>
             </mat-select>
             <mat-error *ngIf="addressForm.controls['documentType'].hasError('required')">
-              Tipo de Documento <strong>required</strong>
+              Tipo de Documento <strong>obligatorio</strong>
             </mat-error>
           </mat-form-field>
         </div>
 
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Numero Documento" formControlName="NumeroDocumento" pattern="[0-9]*">
+            <mat-label id="labelC" for="Numero Documento">Numero Documento</mat-label>
+             <input matInput id="labelC"placeholder="101012983" formControlName="NumeroDocumento" pattern="[0-9]*">
             <mat-error *ngIf="addressForm.controls['NumeroDocumento'].hasError('required')">
-              Numero Documento <strong>required</strong>
+              Numero Documento <strong>obligatorio</strong>
             </mat-error>
             <mat-error *ngIf="addressForm.controls['NumeroDocumento'].hasError('pattern')">
               Ingresa solo números
@@ -52,9 +56,10 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Celular" formControlName="Celular" inputmode="numeric" pattern="[0-9]*">
+            <mat-label id="labelC" for="Celular">Celular</mat-label>
+             <input matInput id="labelC"placeholder="310231233" formControlName="Celular" inputmode="numeric" pattern="[0-9]*">
             <mat-error *ngIf="addressForm.controls['Celular'].hasError('required')">
-              Celular <strong>required</strong>
+              Celular <strong>obligatorio</strong>
             </mat-error>
             <mat-error *ngIf="addressForm.controls['Celular'].hasError('pattern')">
               Ingresa solo números
@@ -64,10 +69,11 @@
 
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Correo electrónico" formControlName="Correo"
+            <mat-label id="labelC" for="Correo electrónico">Correo electrónico</mat-label>
+             <input matInput id="labelC"placeholder="ejemplo@gmail.com" formControlName="Correo"
               pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}">
             <mat-error *ngIf="addressForm.controls['Correo'].hasError('required')">
-              Correo <strong>required</strong>
+              Correo <strong>obligatorio</strong>
             </mat-error>
             <mat-error *ngIf="addressForm.controls['Correo'].hasError('pattern')">
               Ingresa una dirección de correo electrónico válida
@@ -79,27 +85,30 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Direccion" formControlName="Direccion">
+            <mat-label id="labelC" for="Direccion">Direccion</mat-label>
+             <input matInput id="labelC"placeholder="Cl 3# 4A" formControlName="Direccion">
             <mat-error *ngIf="addressForm.controls['Direccion'].hasError('required')">
-              Direccion <strong>required</strong>
+              Direccion <strong>obligatorio</strong>
             </mat-error>
           </mat-form-field>
         </div>
 
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder=" Nombre Usuario" formControlName="NombreUsuario">
+            <mat-label id="labelC" for="Nombre Usuario">Nombre Usuario</mat-label>
+             <input matInput id="labelC"placeholder=" Andrea10" formControlName="NombreUsuario">
             <mat-error *ngIf="addressForm.controls['NombreUsuario'].hasError('required')">
-              Nombre Usuario <strong>required</strong>
+              Nombre Usuario <strong>obligatorio</strong>
             </mat-error>
           </mat-form-field>
         </div>
 
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="password" formControlName="password">
+            <mat-label id="labelC" for="password">Contraseña</mat-label>
+             <input matInput id="labelC"placeholder="Axt*" formControlName="password">
             <mat-error *ngIf="addressForm.controls['password'].hasError('required')">
-              password <strong>required</strong>
+              Contraseña<strong>obligatorio</strong>
             </mat-error>
           </mat-form-field>
         </div>
@@ -110,7 +119,8 @@
 
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Enviar</button>
+      <button id="button" mat-raised-button color="primary" type="submit">Guardar
+      </button>
     </mat-card-actions>
   </mat-card>
 </form>

@@ -1,30 +1,32 @@
 <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
   <mat-card class="shipping-card">
-    <mat-card-header>
-      <mat-card-title>Informacion Login</mat-card-title>
+    <mat-card-header  id="cardHeader">
+      <mat-card-title id="Title">Formulario Login</mat-card-title>
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content id="cardContent">
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="User" formControlName="Apellidos">
+            <mat-label id="labelC" for="User">Usuario</mat-label>
+            <input  id="labelC" matInput placeholder="Ej. Andrea10" formControlName="User">
             <mat-error *ngIf="addressForm.controls['User'].hasError('required')">
-              User <strong>required</strong>
+              El usuario es <strong>Obligatorio</strong>
             </mat-error>
           </mat-form-field>
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Password" formControlName="Nombres">
+            <mat-label id="labelC" for="Password">Contraseña</mat-label>
+            <input  id="labelC" matInput placeholder="Ej. 12A.*" formControlName="Password">
             <mat-error *ngIf="addressForm.controls['Password'].hasError('required')">
-              Password <strong>required</strong>
+              La Contraseña es <strong>Obligatorio</strong>
             </mat-error>
           </mat-form-field>
         </div>
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Enviar</button>
+      <button id="button" mat-raised-button color="primary" type="submit">Guardar</button>
     </mat-card-actions>
   </mat-card>
 </form>
