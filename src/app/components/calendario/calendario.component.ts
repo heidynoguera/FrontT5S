@@ -129,27 +129,29 @@ export class CalendarioComponent implements OnInit, AfterViewInit{
     this.api.Put("calendarios", idCalendario, newData);
   }
 
-  mostrarNotificacionDelete() {
+  mostrarNotificacionDelete(idCalendario: number, FechaCalendario: any, DescripcionCalendario: any ) {
     // Verificar si el navegador soporta las notificaciones
     Swal.fire({
-      title: '¿Esta seguro?',
-      text: "No podrás revertir esto",
+      title: '¿Estás seguro?',
+      text: 'No podrás revertir esto',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, Bórralo!'
+      confirmButtonText: 'Sí, Bórralo!'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Borrado!',
-          'El elemento ha sido borrado.',
-          'success'
-        )
+        // Llama al servicio REST para actualizar el estado del calendario a "Inactivo"
+        this.api.Put('calendarios', idCalendario, {IdCalendario: idCalendario, FechaCalendario: FechaCalendario, DescripcionCalendario: DescripcionCalendario, estado: 'Inactivo' });
+          Swal.fire('Eliminado', 'El elemento ha sido eliminado.', 'success');
+          // Actualiza la lista de calendarios para reflejar el cambio
+          this.api.Get('calendarios').then((res) => {
+            this.dataSource.data = res;
+          });
       }
-    })
+    });
   }
-
+  
   mostrarNotificacionEdit() {
     // Verificar si el navegador soporta las notificaciones
     Swal.fire({

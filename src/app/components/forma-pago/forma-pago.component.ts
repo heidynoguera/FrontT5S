@@ -125,27 +125,30 @@ export class FormaPagoComponent implements OnInit, AfterViewInit{
 
     // Llama al método Put del servicio RestService.
     this.api.Put("FormaPagoes", idPago, newData);
-  }
+  } 
 
-  mostrarNotificacionDelete() {
+  mostrarNotificacionDelete(idPago: number, TipodePago: any, valoraPagar: any ) {
     // Verificar si el navegador soporta las notificaciones
     Swal.fire({
-      title: '¿Esta seguro?',
-      text: "No podrás revertir esto",
+      title: '¿Estás seguro?',
+      text: 'No podrás revertir esto',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, Bórralo!'
+      confirmButtonText: 'Sí, Bórralo!'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Borrado!',
-          'El elemento ha sido borrado.',
-          'success'
-        )
+        console.log(TipodePago)
+        // Llama al servicio REST para actualizar el estado de la forma de pago a "Inactivo"
+        this.api.Put('FormaPagoes', idPago, {idPago, TipoPago: TipodePago, valoraPagar: valoraPagar, estado: 'Inactivo'});
+          Swal.fire('Eliminado', 'El elemento ha sido eliminado.', 'success');
+          // Actualiza la lista de forma de pago para reflejar el cambio
+          this.api.Get('FormaPagoes').then((res) => {
+            this.dataSource.data = res;
+          });
       }
-    })
+    });
   }
 
   mostrarNotificacionEdit() {
