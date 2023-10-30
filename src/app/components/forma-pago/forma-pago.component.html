@@ -27,7 +27,7 @@
         <div *ngIf="column == 'Delete'">
           <th id="tableHeader" mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}</th>
           <td id="icon" mat-cell *matCellDef="let row">
-            <a class="opcion" (click)="mostrarNotificacionDelete()" id="iconDelete"><mat-icon>delete</mat-icon></a>
+            <a class="opcion" (click)="mostrarNotificacionDelete(row.id, row.tipoPago, row.valoraPagar)" id="iconDelete"><mat-icon>delete</mat-icon></a>
           </td>
         </div>
       </div>
