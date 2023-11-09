@@ -12,8 +12,8 @@ import Swal from 'sweetalert2';
 export class FormCalendarioComponent {
   private fb = inject(FormBuilder);
   calendarioForm = this.fb.group({
-    firstName: [null, Validators.required],
-    lastName: [null, Validators.required]
+    Fecha: [null, Validators.required],
+    Descripcion: [null, Validators.required]
   });
 
   hasUnitNumber = false;

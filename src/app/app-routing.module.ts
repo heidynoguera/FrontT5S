@@ -17,6 +17,7 @@ import { FormReservaTutoriaComponent } from './Form/form-reserva-tutoria/form-re
 import { FormRepositorioComponent } from './Form/form-repositorio/form-repositorio.component';
 import { FormEstudiantesComponent } from './Form/form-estudiantes/form-estudiantes.component';
 import { FormLoginComponent } from './Form/form-login/form-login.component';
+import { EditFormCalendarioComponent } from './Form-Edit/edit-form-calendario/edit-form-calendario.component';
 
 
 
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path: "geografia", component: GeografiaComponent},
   {path: "reservaTutoria", component: ReservarTutoriaComponent},
   {path: "repositorio", component: RepositorioComponent},
+  {path: "Edit-Calendario/:id", component: EditFormCalendarioComponent},
 ];
 
 @NgModule({

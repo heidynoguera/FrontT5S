@@ -8,8 +8,8 @@
         <div class="col">
           <mat-form-field class="full-width">
             <mat-label id="labelC" for="fecha">Fecha de la Tutoria</mat-label>
-            <input matInput placeholder="Ex. 2023-09-10" formControlName="firstName">
-            <mat-error *ngIf="calendarioForm.controls['firstName'].hasError('required')">
+            <input matInput placeholder="Ex. 2023-09-10" formControlName="Fecha">
+            <mat-error *ngIf="calendarioForm.controls['Fecha'].hasError('required')">
               Fecha es <strong>Obligatorio</strong>
             </mat-error>
           </mat-form-field>
@@ -19,8 +19,8 @@
         <div class="col">
           <mat-form-field class="full-width">
             <mat-label id="labelC" for="fecha">Descripcion de la Tutoria</mat-label>
-            <input matInput placeholder="Ex. Clase de programacion" formControlName="lastName">
-            <mat-error *ngIf="calendarioForm.controls['lastName'].hasError('required')">
+            <input matInput placeholder="Ex. Clase de programacion" formControlName="Descripcion">
+            <mat-error *ngIf="calendarioForm.controls['Descripcion'].hasError('required')">
               Descripcion es <strong>Obligatorio</strong>
             </mat-error>
           </mat-form-field>
