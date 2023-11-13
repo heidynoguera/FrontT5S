@@ -10,14 +10,8 @@ import { TutorMateriaComponent } from './components/tutor-materia/tutor-materia.
 import { GeografiaComponent } from './components/geografia/geografia.component';
 import { ReservarTutoriaComponent } from './components/reservar-tutoria/reservar-tutoria.component';
 import { RepositorioComponent } from './components/repositorio/repositorio.component';
-import { FormGeografiaComponent } from './Form/form-geografia/form-geografia.component';
-import { FormPagoComponent } from './Form/form-pago/form-pago.component';
-import { FormCalendarioComponent } from './Form/form-calendario/form-calendario.component';
-import { FormReservaTutoriaComponent } from './Form/form-reserva-tutoria/form-reserva-tutoria.component';
-import { FormRepositorioComponent } from './Form/form-repositorio/form-repositorio.component';
-import { FormEstudiantesComponent } from './Form/form-estudiantes/form-estudiantes.component';
-import { FormLoginComponent } from './Form/form-login/form-login.component';
 import { EditFormCalendarioComponent } from './Form-Edit/edit-form-calendario/edit-form-calendario.component';
+import { IncioSesionFormComponent } from './Form/incio-sesion-form/incio-sesion-form.component';
 
 
 
@@ -33,6 +27,7 @@ const routes: Routes = [
   {path: "reservaTutoria", component: ReservarTutoriaComponent},
   {path: "repositorio", component: RepositorioComponent},
   {path: "Edit-Calendario/:id", component: EditFormCalendarioComponent},
+  {path: "Iniciar Sesion", component: IncioSesionFormComponent},
 ];
 
 @NgModule({

@@ -42,6 +42,7 @@ import { FormEstudiantesComponent } from './Form/form-estudiantes/form-estudiant
 import { FormLoginComponent } from './Form/form-login/form-login.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { EditFormCalendarioComponent } from './Form-Edit/edit-form-calendario/edit-form-calendario.component';
+import { IncioSesionFormComponent } from './Form/incio-sesion-form/incio-sesion-form.component';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { EditFormCalendarioComponent } from './Form-Edit/edit-form-calendario/ed
     FormEstudiantesComponent,
     FormLoginComponent,
     EditFormCalendarioComponent,
+    IncioSesionFormComponent,
   ],
   imports: [
     MatProgressSpinnerModule,

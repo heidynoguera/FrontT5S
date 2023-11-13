@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { FormCalendarioComponent } from 'src/app/Form/form-calendario/form-calendario.component';
+import { FormsService } from 'src/app/services/forms.service';
 import { RestService } from 'src/app/services/rest.service';
 import Swal from 'sweetalert2';
 
@@ -23,7 +24,7 @@ export class CalendarioComponent implements OnInit, AfterViewInit{
   paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort; 
 
-  constructor(public api: RestService, public dialog: MatDialog, private router: Router){
+  constructor(public FormService:FormsService, public api: RestService, public dialog: MatDialog, private router: Router){
 
     this.dataSource = new MatTableDataSource();
 
@@ -53,6 +54,7 @@ export class CalendarioComponent implements OnInit, AfterViewInit{
   }
 
   openDialog() {
+    this.FormService.title='Crear'
     const dialogRef = this.dialog.open(FormCalendarioComponent);
   }
 
@@ -171,9 +173,16 @@ export class CalendarioComponent implements OnInit, AfterViewInit{
     })
   }
 
-  onEdit(id: number) {
-    console.log('ID seleccionado:', id);
-    this.router.navigate(['Edit-Calendario/',id])
+  onEdit(element:any) {
+this.FormService.title='Editar'
+    // console.log('ID seleccionado:', id);
+     this.dialog.open(FormCalendarioComponent)
+     console.log(element);
+     
+    this.FormService.calendario=element
+    console.log(element.id);
+
+    
   }
 
    //public async deleteCalendario(idCalendario: string) {

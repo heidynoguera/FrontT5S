@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RestService } from 'src/app/services/rest.service';
 import Swal from 'sweetalert2';
 import { MatTableDataSource } from '@angular/material/table';
 import { HttpClient } from '@angular/common/http';
+import { FormsService } from 'src/app/services/forms.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './edit-form-calendario.component.html',
   styleUrls: ['./edit-form-calendario.component.css']
 })
-export class EditFormCalendarioComponent {
+export class EditFormCalendarioComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   private fb = inject(FormBuilder);
   editCalendarioForm = this.fb.group({
@@ -22,8 +23,8 @@ export class EditFormCalendarioComponent {
     estado: [null, Validators.required]
   });
 
-
-  constructor(private route: ActivatedRoute, private api: RestService, public formBuilder: FormBuilder, private http: HttpClient) {
+title:string;
+  constructor(public FormService:FormsService,private route: ActivatedRoute, private api: RestService, public formBuilder: FormBuilder, private http: HttpClient) {
 
     this.dataSource = new MatTableDataSource();
 
@@ -43,6 +44,9 @@ export class EditFormCalendarioComponent {
         });        
       });
     });
+  }
+  ngOnInit(): void {
+    
   }
 
   onSubmit(): void {
