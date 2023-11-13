@@ -1,0 +1,31 @@
+<form [formGroup]="tutomateriaForm" (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header id="cardHeader">
+      <mat-card-title>Asociar Materia a Tutor</mat-card-title>
+    </mat-card-header>
+    <mat-card-content id="cardContent">    
+       <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="IdTutor" formControlName="Id_Tutor">
+            <mat-error *ngIf="tutomateriaForm.controls['Id_Tutor'].hasError('required')">
+            Id Tutor es <strong>Obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Id Materia" formControlName="Id_Materia">
+            <mat-error *ngIf="tutomateriaForm.controls['Id_Materia'].hasError('required')">
+              Id Materia es <strong>Obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>    
+     
+    </mat-card-content>
+    <mat-card-actions>
+      <button id="button" mat-raised-button color="primary" type="submit">Guardar</button>  
+      </mat-card-actions>
+  </mat-card>
+</form>
