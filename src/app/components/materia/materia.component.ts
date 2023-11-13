@@ -27,7 +27,7 @@ export class MateriaComponent implements OnInit, AfterViewInit  {
   }
 
   ngOnInit(): void {
-    this.api.Get("Materia").then((res) => {
+    this.api.Get("Materiums").then((res) => {
 
       for (let index = 0; index < res.length; index++) {
         this.loadTable([res[index]])
@@ -96,7 +96,7 @@ export class MateriaComponent implements OnInit, AfterViewInit  {
   }
 
   public get() {
-    this.api.Get("Materia");
+    this.api.Get("Materiums");
   }
   openDialog() {
     const dialogRef = this.dialog.open(FormMateriaComponent);
@@ -109,11 +109,11 @@ export class MateriaComponent implements OnInit, AfterViewInit  {
 //actualizar datos
   public putGeografia(idGeografia: number) { 
     const newData = { /* tus datos a actualizar */ };
-    this.api.Put("Materia", idGeografia, newData);
+    this.api.Put("Materiums", idGeografia, newData);
   }
   //crear datos
   public postGeografia(newGeografia : any) {
-    this.api.Post("Materia", newGeografia);
+    this.api.Post("Materiums", newGeografia);
   }
   //borrar datos
   //public async deleteGeografia(IdGeografia: string) {
