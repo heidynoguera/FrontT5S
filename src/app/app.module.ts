@@ -41,6 +41,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { FormEstudiantesComponent } from './Form/form-estudiantes/form-estudiantes.component';
 import { FormLoginComponent } from './Form/form-login/form-login.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { FormMateriaComponent } from './Form/form-materia/form-materia.component';
+import { FormTutorComponent } from './Form/form-tutor/form-tutor.component';
+import { FormTutormateriaComponent } from './Form/form-tutormateria/form-tutormateria.component';
 
 
 @NgModule({
@@ -64,6 +67,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     FormCalendarioComponent,
     FormEstudiantesComponent,
     FormLoginComponent,
+    FormMateriaComponent,
+    FormTutorComponent,
+    FormTutormateriaComponent,
+    
   ],
   imports: [
     MatProgressSpinnerModule,
