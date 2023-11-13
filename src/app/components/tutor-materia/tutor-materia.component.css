@@ -41,9 +41,6 @@ tr.mat-header-row {
 }
 
 /* Estilos para las filas de datos */
-tr.mat-row {
-  background-color: #f9f9f9;
-}
 
 /* Estilos para las celdas de acciones */
 td.mat-cell .opcion {
