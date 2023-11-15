@@ -1,0 +1,31 @@
+<form [formGroup]="materiaForm" (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header id="cardHeader">
+      <mat-card-title>Registro Materia</mat-card-title>
+    </mat-card-header>
+    <mat-card-content id="cardContent">    
+       <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Id Materia" formControlName="Id_Materia">
+            <mat-error *ngIf="materiaForm.controls['Id_Materia'].hasError('required')">
+            Id materia es <strong>Obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Materia" formControlName="Materia">
+            <mat-error *ngIf="materiaForm.controls['Materia'].hasError('required')">
+              Materia es <strong>Obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>    
+     
+    </mat-card-content>
+    <mat-card-actions>
+      <button id="button" mat-raised-button color="primary" type="submit">Guardar</button>  
+      </mat-card-actions>
+  </mat-card>
+</form>
