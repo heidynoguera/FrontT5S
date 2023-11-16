@@ -5,6 +5,12 @@
 .shipping-card {
   min-width: 120px;
   margin: 20px auto;
+  position: relative;
+  border-radius: 5px;
+  padding: 60px 0 40px 0;
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: 0.3s ease;
 }
 
 .mat-radio-button {
@@ -26,14 +32,7 @@
   margin-right: 0;
 }
 
-/*#Title{
-  color: aliceblue;
-  font-weight: 800;
-  font-size: 2em;
-  font-family: 'Roboto';
-}*/
-
-#Title{
+#Title {
   font-size: 28px;
   font-weight: 600;
   position: relative;
@@ -42,36 +41,55 @@
   color: aliceblue;
 }
 
-#cardHeader{
-  align-self: center;
-}
-
-#cardContent{
+#cardContent {
   padding: 30px 16px;
 }
 
-#labelC{
+#labelC {
   color: aliceblue;
-  font-size: 14px;
+  font-size: 20px;
   font-family: 'Roboto';
 }
 
-#button{
-  border: none;
-  outline: none;
-  padding: 10px;
+#button {
   border-radius: 10px;
-  color: #fff;
-  font-size: 16px;
-  background-color: #645bff;
+  color: gray;
+  background-color: #fff;
   width: 100%;
   font-family: 'Roboto';
+  outline: 0;
+  cursor: pointer;
+  position: relative;
+  border: 2px solid #e3e3e3;
+  padding: 20px 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: 0.3s ease;
 }
 
-#button:hover{
-  background-color: #00bfff96;
+#button:hover {
+  color:#ed2553;
 }
 
-#form{
+#form {
   margin: 0 10px 0 10px;
+}
+
+.title {
+  position: relative;
+  z-index: 1;
+  border-left: 5px solid #ed2553;
+  margin: 0 0 35px;
+  padding: 10px 0 10px 50px;
+  color: #ed2553;
+  font-size: 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+#input{
+  font-size: 25px;
 }

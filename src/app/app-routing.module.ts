@@ -10,7 +10,6 @@ import { TutorMateriaComponent } from './components/tutor-materia/tutor-materia.
 import { GeografiaComponent } from './components/geografia/geografia.component';
 import { ReservarTutoriaComponent } from './components/reservar-tutoria/reservar-tutoria.component';
 import { RepositorioComponent } from './components/repositorio/repositorio.component';
-import { EditFormCalendarioComponent } from './Form-Edit/edit-form-calendario/edit-form-calendario.component';
 import { IncioSesionFormComponent } from './Form/incio-sesion-form/incio-sesion-form.component';
 
 
@@ -26,7 +25,6 @@ const routes: Routes = [
   {path: "geografia", component: GeografiaComponent},
   {path: "reservaTutoria", component: ReservarTutoriaComponent},
   {path: "repositorio", component: RepositorioComponent},
-  {path: "Edit-Calendario/:id", component: EditFormCalendarioComponent},
   {path: "Iniciar Sesion", component: IncioSesionFormComponent},
 ];
 
