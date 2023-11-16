@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class RestService {
   //inyecccion de dependencias
-  URL = "https://localhost:7072/api/"
+  URL = "https://localhost:7149/api/"
   constructor(public api: HttpClient) { }
 
   public async Get(controller: string) {
@@ -46,9 +46,5 @@ export class RestService {
       // Aquí puedes manejar el error, mostrar un mensaje de error, etc.
     }
   }
-  
-  
-
- 
   
 }
