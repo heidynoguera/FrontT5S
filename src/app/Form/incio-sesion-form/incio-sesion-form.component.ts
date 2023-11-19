@@ -12,7 +12,7 @@ export class IncioSesionFormComponent {
 
   usuariosArray: { nombreusuario: string, password: string }[] = [];
 
-  constructor(private restService: RestService) {}
+  constructor(private restService: RestService) { }
 
   private fb = inject(FormBuilder);
   loginForm = this.fb.group({
@@ -20,42 +20,40 @@ export class IncioSesionFormComponent {
     password: ['', Validators.required]
   });
 
-  hasUnitNumber = false; 
+  hasUnitNumber = false;
 
   onSubmit(): void {
     const usuarioValue = this.loginForm.controls.usuario.value;
     const passwordValue = this.loginForm.controls.password.value;
 
-    console.log(usuarioValue);
-    console.log(passwordValue);
+    this.restService.Login(usuarioValue, passwordValue)
+      .then((response) => {
 
-    this.restService.Get("Logins/").then((response) => {
-      if (Array.isArray(response)) {
-        this.usuariosArray = response;
-        console.log('Usuarios Array:', this.usuariosArray);
-
-        const usuarioEncontrado = this.usuariosArray.find(user => user.nombreusuario === usuarioValue);
-
-        if (usuarioEncontrado && usuarioEncontrado.password === passwordValue) {
-          console.log('El usuario y la contraseña coinciden.' + usuarioEncontrado);
-
+        if (response != null) {
+          const userData = response;
+          console.log('Datos del estudiante:', userData);
           Swal.fire({
-            title: "Usuario Autenticado!",
-            text: "Inicio de Sesion Exitoso!",
-            icon: "success"
+            title: 'Usuario Autenticado!',
+            text: 'Inicio de Sesión Exitoso!',
+            icon: 'success'
           });
         } else {
-          console.log('El usuario o la contraseña NO coinciden.');
-          console.log('Usuarios lista: ' +  this.usuariosArray.map(user => user.nombreusuario));
+          console.log('Inicio de sesión fallido. Credenciales incorrectas.');
           Swal.fire({
-            title: "Usuario NO Autenticado!",
-            text: "Inicio de Sesion FALLIDO!",
-            icon: "error"
+            title: 'Usuario NO Autenticado!',
+            text: 'Inicio de Sesión FALLIDO!',
+            icon: 'error'
           });
         }
-      }
-    }).catch((error) => {
-      console.error('Error al obtener los datos del servicio:', error);
-    });
+      })
+      .catch((error) => {
+        console.error('Error al iniciar sesión:', error);
+        Swal.fire({
+          title: 'Error!',
+          text: 'Ocurrió un error al iniciar sesión',
+          icon: 'error'
+        });
+      });
   }
+
 }

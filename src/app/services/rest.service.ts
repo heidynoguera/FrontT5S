@@ -46,5 +46,16 @@ export class RestService {
       // Aquí puedes manejar el error, mostrar un mensaje de error, etc.
     }
   }
+
+  public async Login(user: string, password: string): Promise<any> {
+    const url = `${this.URL}Logins/${user},${password}`;
+    try {
+      const response = await this.api.get(url).toPromise();
+      return response;
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+      throw error;
+    }
+  }  
   
 }
