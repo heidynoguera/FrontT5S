@@ -1,34 +1,46 @@
-<form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()" id="form">
-  <mat-card class="shipping-card">
-    <mat-card-header id="cardHeader">
-      <mat-card-title class="title">L O G I N</mat-card-title>
-    </mat-card-header>
-    <mat-card-content id="cardContent">
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <mat-label id="labelC" for="Usuario">User</mat-label>
-            <input id="input" matInput placeholder="Ej. diego" formControlName="usuario">
-            <mat-error *ngIf="loginForm.controls['usuario'].hasError('required')">
-              El usuario es <strong>Obligatorio</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <mat-label id="labelC" for="Password">Password</mat-label>
-            <input id="input" matInput type="password" placeholder="Ej, 46789" formControlName="password">
-            <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
-              La Contraseña es <strong>Obligatoria</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit" id="button">Enter</button>
-    </mat-card-actions>
-  </mat-card>
-</form>
+<body style="display: flex; justify-content: center; align-items: center; height: 90vh; margin: 0;">
+  <div style="display: grid; grid-template-columns: 1fr 1fr; margin: 0 20px 0 20px;">
+    <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()" id="form">
+      <mat-card class="shipping-card">
+        <mat-card-header id="cardHeader">
+          <mat-card-title class="title">L O G I N</mat-card-title>
+        </mat-card-header>
+        <mat-card-content id="cardContent">
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label id="labelC" for="Usuario">User</mat-label>
+                <input id="input" matInput placeholder="Ej. diego" formControlName="usuario">
+                <mat-icon matPrefix>mail_outline</mat-icon>
+                <mat-error *ngIf="loginForm.controls['usuario'].hasError('required')">
+                  El usuario es <strong>Obligatorio</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label id="labelC" for="Password">Password</mat-label>
+                <input id="input" matInput type="password" placeholder="Ej, 46789" formControlName="password">
+                <mat-icon matPrefix>lock_outline</mat-icon>
+                <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+                  La Contraseña es <strong>Obligatoria</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit" id="button">Enter</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+      <img
+        src="https://assets-global.website-files.com/627cdcca8bc0d22df9b2672f/64643bbb9590d3e67ba37171_Administrative%20Officer%20Interview%20Questions.webp"
+        alt="Imagen de bienvenida" style="width: 100%;
+    height: 100%; border-radius: 0 10px 10px 0;">
+    </div>
+  </div>
+</body>

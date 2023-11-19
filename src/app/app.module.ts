@@ -45,6 +45,7 @@ import { IncioSesionFormComponent } from './Form/incio-sesion-form/incio-sesion-
 import { FormMateriaComponent } from './Form/form-materia/form-materia.component';
 import { FormTutorComponent } from './Form/form-tutor/form-tutor.component';
 import { FormTutormateriaComponent } from './Form/form-tutormateria/form-tutormateria.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import { FormTutormateriaComponent } from './Form/form-tutormateria/form-tutorma
     
   ],
   imports: [
+    FlexLayoutModule,
     MatProgressSpinnerModule,
     MatDialogModule,
     MatButtonModule,
