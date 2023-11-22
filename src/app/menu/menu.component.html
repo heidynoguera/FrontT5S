@@ -27,7 +27,7 @@
       <a mat-list-item href="/login" style="height: 60px;"><div class="avatar-container" style="width: 100%;
         justify-content: center;
         margin-top: -28px;">
-        <ngx-avatars name="T 5 S"></ngx-avatars>
+        <ngx-avatars name={{avatarname}}></ngx-avatars>
       </div></a>
     </mat-nav-list>
   </div>
@@ -47,6 +47,7 @@
       font-size: 40px;
       font-weight: 500;
       color:white">T5S</span>
+   
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { FormsService } from 'src/app/services/forms.service';
 import { RestService } from 'src/app/services/rest.service';
 import Swal from 'sweetalert2';
 
@@ -12,7 +13,7 @@ export class IncioSesionFormComponent {
 
   usuariosArray: { nombreusuario: string, password: string }[] = [];
 
-  constructor(private restService: RestService) { }
+  constructor(private restService: RestService, private formService: FormsService) { }
 
   private fb = inject(FormBuilder);
   loginForm = this.fb.group({
@@ -25,12 +26,18 @@ export class IncioSesionFormComponent {
   onSubmit(): void {
     const usuarioValue = this.loginForm.controls.usuario.value;
     const passwordValue = this.loginForm.controls.password.value;
+    const loginEstado = false;
 
     this.restService.Login(usuarioValue, passwordValue)
       .then((response) => {
 
         if (response != null) {
           const userData = response;
+          const loginEstado = true;
+          const nombre = localStorage.setItem('nombre', userData.nombre);
+          this.formService.changeUserName(userData.nombre);
+          console.log(nombre)
+          console.log(loginEstado)
           console.log('Datos del estudiante:', userData);
           Swal.fire({
             title: 'Usuario Autenticado!',
@@ -47,6 +54,8 @@ export class IncioSesionFormComponent {
         }
       })
       .catch((error) => {
+        const loginEstado = false;
+        console.log(loginEstado);
         console.error('Error al iniciar sesión:', error);
         Swal.fire({
           title: 'Error!',
