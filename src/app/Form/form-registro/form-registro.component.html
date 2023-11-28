@@ -1,0 +1,55 @@
+<!-- <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">-->
+    <form [formGroup]="registerForm" class="login-wrapper" (ngSubmit)="onSingUp()">
+        <mat-card class="shipping-card">
+          <mat-card-header id="cardHeader">
+            <mat-card-title id="Title">Registro</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content id="cardContent">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Nombre de Usuario" formControlName="usuario">
+                  <mat-error *ngIf="registerForm.controls['usuario'].hasError('required')">
+                    Nombre de Usuario es <strong>Obligatorio</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Correo" formControlName="correo">
+                  <mat-error *ngIf="registerForm.controls['correo'].hasError('required')">
+                    Correo es <strong>Obligatorio</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <span class="fa fa-lock px-2"></span> <input matInput [type]="type" (click)="hideShowPass()" placeholder="Contraseña" formControlName="password">
+                  <span class="fa {{eyeIcon}}"></span>
+                  <mat-error *ngIf="registerForm.controls['password'].hasError('required')">
+                    Contraseña es <strong>Obligatorio</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <mat-select placeholder="Roles" formControlName="roles">
+                    <mat-option *ngFor="let roles of roles" [value]="roles">
+                      {{ roles.name}}
+
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="registerForm.controls['roles'].hasError('required')">
+                    Rol es <strong>Obligatorio</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>     
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-stroked-button id="registro"  color="accent" class="btn-block">Registro</button>
+        </mat-card-actions>
+        </mat-card>
+      </form>
+ 

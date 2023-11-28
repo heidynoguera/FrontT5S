@@ -108,3 +108,14 @@
   animation: slideright 4s ease-out;
 
 }
+
+.registro-link {
+  color: orange;
+  text-decoration: none; /* Esto elimina el subrayado predeterminado de los enlaces */
+}
+
+.registro-link:hover {
+  color: greenyellow;
+}
+
+

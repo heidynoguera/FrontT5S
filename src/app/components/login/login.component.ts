@@ -4,7 +4,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormLoginComponent } from 'src/app/Form/form-login/form-login.component';
-import { FormPagoComponent } from 'src/app/Form/form-pago/form-pago.component';
 import { RestService } from 'src/app/services/rest.service';
 import Swal from 'sweetalert2';
 
