@@ -46,6 +46,8 @@ import { FormMateriaComponent } from './Form/form-materia/form-materia.component
 import { FormTutorComponent } from './Form/form-tutor/form-tutor.component';
 import { FormTutormateriaComponent } from './Form/form-tutormateria/form-tutormateria.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormRegistroComponent } from './Form/form-registro/form-registro.component';
+import { FormRecuperarPasswordComponent } from './Form/form-recuperar-password/form-recuperar-password.component';
 
 
 @NgModule({
@@ -73,6 +75,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormTutorComponent,
     FormTutormateriaComponent,
     IncioSesionFormComponent,
+    FormRegistroComponent,
+    FormRecuperarPasswordComponent,
     
   ],
   imports: [
