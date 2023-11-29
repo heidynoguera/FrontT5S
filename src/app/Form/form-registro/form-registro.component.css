@@ -1,0 +1,44 @@
+.login-wrapper {
+  height: 100vh; /* Ajusta la altura según tus necesidades */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shipping-card {
+  width: 300px; /* Ajusta el ancho según tus necesidades */
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col {
+  flex: 1; /* Hace que cada columna tenga el mismo ancho */
+  margin: 1px; /* Espacio entre las columnas, ajusta según tus necesidades */
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 10px;
+}
+
+input[type='text'],
+input[type='password'] {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    width: 100%
+}
+
+.fa-eye-slash.btn {
+    border: none;
+    outline: none;
+    box-shadow: none
+}

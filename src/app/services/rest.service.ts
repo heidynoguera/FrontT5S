@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, Subscriber } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -58,4 +59,14 @@ export class RestService {
     }
   }  
   
+  public postLogin(user: string, password: string): Observable<any> {
+    const url = `${this.URL}Logins/${user},${password}`;
+    const requestBody = {
+      user: user,
+      password: password
+    };  // Puedes agregar datos al cuerpo de la solicitud si es necesario
+
+    // Realizar la solicitud POST y manejar la respuesta
+    return this.api.post(url, requestBody);
+  } 
 }
