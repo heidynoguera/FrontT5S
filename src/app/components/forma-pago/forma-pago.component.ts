@@ -42,6 +42,8 @@ export class FormaPagoComponent implements OnInit, AfterViewInit {
   }
 
   openDialog() {
+    this.FormService.title = 'Crear';
+    console.log(this.FormService.title)
     const dialogRef = this.dialog.open(FormPagoComponent);
   }
 

@@ -3,6 +3,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { formaPago } from 'src/app/Models/formaPago';
+import { formaPagoNew } from 'src/app/Models/formaPagoNew';
 import { FormsService } from 'src/app/services/forms.service';
 import { RestService } from 'src/app/services/rest.service';
 import Swal from 'sweetalert2';
@@ -28,7 +29,6 @@ export class FormPagoComponent implements OnInit {
   title:string
 
   ngOnInit(): void {
-    console.log(this.FormService.formaPago.tipoPago)
     if (this.FormService.title == 'Editar') {
       this.title = this.FormService.title
       this.formaPagoForm.setControl('tipoPago', new FormControl(this.FormService.formaPago.tipoPago));
@@ -53,6 +53,14 @@ export class FormPagoComponent implements OnInit {
         }
         this.api.Put('FormaPagoes', this.FormService.formaPago.id, object)
         this.dialog.closeAll();
+        window.location.reload()
+      }else if(this.FormService.title == 'Crear'){
+        let objects: formaPagoNew = {
+          TipoPago: this.formaPagoForm.controls['tipoPago'].value,
+          ValoraPagar: Number(this.formaPagoForm.controls['valor'].value),
+          estado: "Activo"
+        }
+        this.api.Post('FormaPagoes', objects)
         window.location.reload()
       }
     Swal.fire(

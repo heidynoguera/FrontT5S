@@ -2,6 +2,10 @@ import { Component, inject } from '@angular/core';
 import { FormsService } from 'src/app/services/forms.service';
 import { RestService } from 'src/app/services/rest.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { registroEstudiante} from 'src/app/Models/registroEstudiante';
+import { registroLogin } from 'src/app/Models/registroLogin';
+import { Router } from '@angular/router';
 
 
 
@@ -13,72 +17,82 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class FormRegistroComponent {
   type: string = 'password';
   isText: boolean = false;
-  eyeIcon:string = "fa-eye-slash"
+  eyeIcon: string = "fa-eye-slash"
   private fb = inject(FormBuilder);
   registerForm = this.fb.group({
-    usuario: ['', Validators.required],
+    NombreUsuario: ['', Validators.required],
     password: ['', Validators.required],
-    correo: ['', [Validators.required,Validators.email]],
-    nombre: ['', Validators.required],
-    apellido: ['', Validators.required],
+    Correo: ['', [Validators.required, Validators.email]],
+    Nombres: ['', Validators.required],
+    Apellidos: ['', Validators.required],
     fechaNacimiento: ['', Validators.required],
-    direccion: ['', Validators.required],
-    celular: ['', Validators.required],
-    numeroDocumento: ['', Validators.required],
-    tipoDocumento: ['', Validators.required],
-    //roles: [null, Validators.required]
+    Direccion: ['', Validators.required],
+    Celular: ['', Validators.required],
+    NumeroDocumento: ['', Validators.required],
+    documentType: ['', Validators.required],
   });
   hasUnitNumber = false;
 
-  roles = [
-    {name: 'Estudiante'},
-    {name: 'Tutor'}
+  Documento = [
+    { name: 'Tarjeta de identidad', abbreviation: 'TI' },
+    { name: 'Cédula de ciudadanía', abbreviation: 'CC' },
+    { name: 'Cédula de extranjería', abbreviation: 'CE' },
+    { name: 'NIT', abbreviation: 'NIT' },
+    { name: 'Pasaporte', abbreviation: 'P.P' },
+  ]
 
-  ];
-
-  constructor(private restService: RestService, private formService: FormsService) { }
+  constructor(private restService: RestService, private formService: FormsService, private router: Router) { }
 
   ngOnInit(): void {
   }
-  hideShowPass(){
+  hideShowPass() {
     this.isText = !this.isText;
     this.isText ? this.eyeIcon = 'fa-eye' : this.eyeIcon = 'fa-eye-slash'
     this.isText ? this.type = 'text' : this.type = 'password'
   }
-  onSingUp(){
-    const User = this.registerForm.controls.usuario.value;
-    const password = this.registerForm.controls.password.value;
-    const estado = "Activo";
-    const nombre = this.registerForm.controls.nombre.value;
-    const apellido = this.registerForm.controls.apellido.value; 
-    const fechaNacimiento = this.registerForm.controls.fechaNacimiento.value;
-    const tipoDocumento = this.registerForm.controls.tipoDocumento.value;
-    const numeroDocumento = this.registerForm.controls.numeroDocumento.value;
-    const celular = this.registerForm.controls.celular.value;
-    const correo = this.registerForm.controls.correo.value;
-    const direccion = this.registerForm.controls.direccion.value;
 
-    //this.restService.Get("Estudiantes", [])
-    //const correo = this.registerForm.controls.correo.value;
-    //const roles = this.registerForm.controls.roles.value;
-  
-      // this.restService.postLogin(usuario, password)
-      //   .subscribe(
-      //     respuesta => {
-      //       if (respuesta.exitoso) {
-      //         // La operación fue exitosa
-      //         console.log('Mensaje del servidor:', respuesta.mensaje);
-      //       } else {
-      //         // La operación no fue exitosa
-      //         console.error('Error del servidor:', respuesta.mensaje);
-      //       }
-      //     },
-      //     error => {
-      //       console.error('Error al realizar la solicitud POST:', error);
-      //       // Aquí puedes manejar los errores según tus necesidades
-      //     }
-      //   );
+  onSubmit(): void {
+    if (this.registerForm.valid) {
+
+      let object: registroEstudiante = {
+        NombreEst: this.registerForm.controls.Nombres.value,
+        ApellidoEst: this.registerForm.controls.Apellidos.value,
+        FechaNacimientoEst: new Date(this.registerForm.controls.fechaNacimiento.value),
+        TipoDocumentoEst: this.registerForm.controls.documentType.value,
+        NumeroDocumentoEst: Number(this.registerForm.controls.NumeroDocumento.value),
+        CelularEst: Number(this.registerForm.controls.Celular.value),
+        CorreoEst: this.registerForm.controls.Correo.value,
+        DireccionEst: this.registerForm.controls.Direccion.value,
+        PasswordEst: this.registerForm.controls.password.value,
+        estado: "Activo",
+        NombreUsuarioEst: this.registerForm.controls.NombreUsuario.value,
+      }
+
+      this.restService.Post("Estudiantes", object);
+
+      let objects: registroLogin = {
+        User: this.registerForm.controls.NombreUsuario.value,
+        Password: this.registerForm.controls.password.value,
+        estado: "Activo",
+      }
+
+      this.restService.Post("Logins", objects)
+
+      this.router.navigate(['/']);
+
+      Swal.fire(
+        'Buen Trabajo!',
+        'Haz Terminado El Formulario!',
+        'success'
+      )
+    } else {
+      Swal.fire(
+        'Por favor llenar todos los campos!',
+        'Error en el Formulario!',
+        'error'
+      )
     }
-      
   }
+
+}
 

@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { CalendarioMV } from '../Models/CalendarioMV';
 import { BehaviorSubject } from 'rxjs';
 import { formaPagoMV } from '../Models/formaPagoMV';
+import { CalendarioNewMV } from '../Models/CalendarioNewMV';
+import { formaPagoNewMV } from '../Models/formaPagoNewMV';
+import { registroEstudianteMV } from '../Models/registroEstudianteMV';
+import { registroLoginMV } from '../Models/registroLoginMV';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +22,10 @@ export class FormsService {
   calendario:CalendarioMV;
   avatar:string;
   formaPago:formaPagoMV;
+  calendarioNew: CalendarioNewMV;
+  formaPagoNew: formaPagoNewMV;
+  registroEstudiante: registroEstudianteMV;
+  registroLogin: registroLoginMV;
 
   changeUserName(name: string) {
     this.userNameSource.next(name);

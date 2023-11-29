@@ -3,6 +3,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Calendario } from 'src/app/Models/Calendario';
+import { CalendarioNew } from 'src/app/Models/CalendarioNew';
 import { FormsService } from 'src/app/services/forms.service';
 import { RestService } from 'src/app/services/rest.service';
 import Swal from 'sweetalert2';
@@ -53,13 +54,13 @@ export class FormCalendarioComponent implements OnInit {
         this.dialog.closeAll();
         window.location.reload()
       } else if(this.FormService.title == 'Crear'){
-        let object: Calendario = {
-          IdCalendario: Number("3"),
+        let objects: CalendarioNew = {
           FechaCalendario: new Date(this.calendarioForm.controls['Fecha'].value),
           DescripcionCalendario: this.calendarioForm.controls['Descripcion'].value,
           estado: "Activo"
         }
-        this.api.Post('Calendarios', object)
+        this.api.Post('Calendarios', objects)
+        window.location.reload()
       }
       Swal.fire(
         'Buen Trabajo!',
