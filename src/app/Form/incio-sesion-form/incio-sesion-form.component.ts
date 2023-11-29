@@ -35,7 +35,7 @@ export class IncioSesionFormComponent {
         if (response != null) {
           const userData = response;
           const loginEstado = true;
-          const nombre = localStorage.setItem('nombre', userData.nombre);
+          const nombre = localStorage.setItem('nombre', usuarioValue);
           this.formService.changeUserName(localStorage.getItem('nombre'));
           console.log(nombre)
           console.log(loginEstado)

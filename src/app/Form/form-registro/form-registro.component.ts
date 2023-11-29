@@ -19,7 +19,14 @@ export class FormRegistroComponent {
     usuario: ['', Validators.required],
     password: ['', Validators.required],
     correo: ['', [Validators.required,Validators.email]],
-    roles: [null, Validators.required]
+    nombre: ['', Validators.required],
+    apellido: ['', Validators.required],
+    fechaNacimiento: ['', Validators.required],
+    direccion: ['', Validators.required],
+    celular: ['', Validators.required],
+    numeroDocumento: ['', Validators.required],
+    tipoDocumento: ['', Validators.required],
+    //roles: [null, Validators.required]
   });
   hasUnitNumber = false;
 
@@ -39,27 +46,38 @@ export class FormRegistroComponent {
     this.isText ? this.type = 'text' : this.type = 'password'
   }
   onSingUp(){
-    const usuario = this.registerForm.controls.usuario.value;
+    const User = this.registerForm.controls.usuario.value;
     const password = this.registerForm.controls.password.value;
+    const estado = "Activo";
+    const nombre = this.registerForm.controls.nombre.value;
+    const apellido = this.registerForm.controls.apellido.value; 
+    const fechaNacimiento = this.registerForm.controls.fechaNacimiento.value;
+    const tipoDocumento = this.registerForm.controls.tipoDocumento.value;
+    const numeroDocumento = this.registerForm.controls.numeroDocumento.value;
+    const celular = this.registerForm.controls.celular.value;
     const correo = this.registerForm.controls.correo.value;
-    const roles = this.registerForm.controls.roles.value;
+    const direccion = this.registerForm.controls.direccion.value;
+
+    //this.restService.Get("Estudiantes", [])
+    //const correo = this.registerForm.controls.correo.value;
+    //const roles = this.registerForm.controls.roles.value;
   
-      this.restService.postLogin(usuario, password)
-        .subscribe(
-          respuesta => {
-            if (respuesta.exitoso) {
-              // La operación fue exitosa
-              console.log('Mensaje del servidor:', respuesta.mensaje);
-            } else {
-              // La operación no fue exitosa
-              console.error('Error del servidor:', respuesta.mensaje);
-            }
-          },
-          error => {
-            console.error('Error al realizar la solicitud POST:', error);
-            // Aquí puedes manejar los errores según tus necesidades
-          }
-        );
+      // this.restService.postLogin(usuario, password)
+      //   .subscribe(
+      //     respuesta => {
+      //       if (respuesta.exitoso) {
+      //         // La operación fue exitosa
+      //         console.log('Mensaje del servidor:', respuesta.mensaje);
+      //       } else {
+      //         // La operación no fue exitosa
+      //         console.error('Error del servidor:', respuesta.mensaje);
+      //       }
+      //     },
+      //     error => {
+      //       console.error('Error al realizar la solicitud POST:', error);
+      //       // Aquí puedes manejar los errores según tus necesidades
+      //     }
+      //   );
     }
       
   }

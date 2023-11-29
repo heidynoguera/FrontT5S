@@ -11,13 +11,9 @@ import { GeografiaComponent } from './components/geografia/geografia.component';
 import { ReservarTutoriaComponent } from './components/reservar-tutoria/reservar-tutoria.component';
 import { RepositorioComponent } from './components/repositorio/repositorio.component';
 import { IncioSesionFormComponent } from './Form/incio-sesion-form/incio-sesion-form.component';
-<<<<<<< HEAD
-import { BienvenidaComponent } from './components/bienvenida/bienvenida.component';
-=======
 import { FormRegistroComponent } from './Form/form-registro/form-registro.component';
 import { FormRecuperarPasswordComponent } from './Form/form-recuperar-password/form-recuperar-password.component';
->>>>>>> origin/main
-
+import { BienvenidaComponent } from './components/bienvenida/bienvenida.component'
 
 
 const routes: Routes = [

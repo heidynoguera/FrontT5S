@@ -132,7 +132,7 @@ export class CalendarioComponent implements OnInit, AfterViewInit {
     this.api.Put("calendarios", idCalendario, newData);
   }
 
-  mostrarNotificacionDelete(idCalendario: number, FechaCalendario: any, DescripcionCalendario: any) {
+  mostrarNotificacionDelete(idCalendario: number) {
     // Verificar si el navegador soporta las notificaciones
     Swal.fire({
       title: '¿Estás seguro?',
@@ -144,10 +144,9 @@ export class CalendarioComponent implements OnInit, AfterViewInit {
       confirmButtonText: 'Sí, Bórralo!'
     }).then((result) => {
       if (result.isConfirmed) {
-        // Llama al servicio REST para actualizar el estado del calendario a "Inactivo"
-        this.api.Put('calendarios', idCalendario, { IdCalendario: idCalendario, FechaCalendario: FechaCalendario, DescripcionCalendario: DescripcionCalendario, estado: 'Inactivo' });
+        this.api.Delete("calendarios", idCalendario);
+        window.location.reload();
         Swal.fire('Eliminado', 'El elemento ha sido eliminado.', 'success');
-        // Actualiza la lista de calendarios para reflejar el cambio
         this.api.Get('calendarios').then((res) => {
           this.dataSource.data = res;
         });
@@ -185,10 +184,5 @@ export class CalendarioComponent implements OnInit, AfterViewInit {
 
   }
 
-  //public async deleteCalendario(idCalendario: string) {
-
-  //const response = await this.api.Delete("calendarios", "2");
-
-  //}
 }
 

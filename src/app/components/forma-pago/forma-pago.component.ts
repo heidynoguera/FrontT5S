@@ -119,7 +119,7 @@ export class FormaPagoComponent implements OnInit, AfterViewInit {
     this.api.Put("FormaPagoes", idPago, newData);
   }
 
-  mostrarNotificacionDelete(idPago: number, TipodePago: any, valoraPagar: any) {
+  mostrarNotificacionDelete(idPago: number) {
     // Verificar si el navegador soporta las notificaciones
     Swal.fire({
       title: '¿Estás seguro?',
@@ -131,9 +131,8 @@ export class FormaPagoComponent implements OnInit, AfterViewInit {
       confirmButtonText: 'Sí, Bórralo!'
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(TipodePago)
-        // Llama al servicio REST para actualizar el estado de la forma de pago a "Inactivo"
-        this.api.Put('FormaPagoes', idPago, { idPago, TipoPago: TipodePago, valoraPagar: valoraPagar, estado: 'Inactivo' });
+        this.api.Delete("FormaPagoes", idPago)
+        window.location.reload()
         Swal.fire('Eliminado', 'El elemento ha sido eliminado.', 'success');
         // Actualiza la lista de forma de pago para reflejar el cambio
         this.api.Get('FormaPagoes').then((res) => {
@@ -172,9 +171,4 @@ export class FormaPagoComponent implements OnInit, AfterViewInit {
 
   }
 
-  //public async deleteFormaPagoes(idPago: string) {
-
-  //const response = await this.api.Delete("FormaPagoes", "2");
-
-  //}
 }
