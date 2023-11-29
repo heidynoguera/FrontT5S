@@ -1,6 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { formaPago } from 'src/app/Models/formaPago';
+import { FormsService } from 'src/app/services/forms.service';
+import { RestService } from 'src/app/services/rest.service';
 import Swal from 'sweetalert2';
 
 
@@ -9,19 +13,48 @@ import Swal from 'sweetalert2';
   templateUrl: './form-pago.component.html',
   styleUrls: ['./form-pago.component.css']
 })
-export class FormPagoComponent {
+export class FormPagoComponent implements OnInit {
   private fb = inject(FormBuilder);
-  addressForm = this.fb.group({
-    company: null,
-    firstName: [null, Validators.required],
-    address: [null, Validators.required]
+
+  formaPagoForm = this.fb.group({
+    tipoPago: ['', Validators.required],
+    valor: ['', Validators.required]
   });
+
+  constructor(public dialog:MatDialog, public FormService:FormsService, public api:RestService){}
 
   hasUnitNumber = false;
 
+  title:string
+
+  ngOnInit(): void {
+    console.log(this.FormService.formaPago.tipoPago)
+    if (this.FormService.title == 'Editar') {
+      this.title = this.FormService.title
+      this.formaPagoForm.setControl('tipoPago', new FormControl(this.FormService.formaPago.tipoPago));
+      this.formaPagoForm.setControl('valor', new FormControl(String(this.FormService.formaPago.valoraPagar)));
+
+    } else
+
+      if (this.FormService.title == 'Crear') {
+        this.title = this.FormService.title
+      }
+  }
+
 
   onSubmit(): void {
-    if (this.addressForm.valid) {
+    if (this.formaPagoForm.valid) {
+      if (this.FormService.title == 'Editar') {
+        let object: formaPago = {
+          IdPago: Number(this.FormService.formaPago.id),
+          TipoPago: String(this.formaPagoForm.controls['tipoPago'].value),
+          ValoraPagar: Number(this.formaPagoForm.controls['valor'].value),
+          estado: this.FormService.formaPago.estado
+        }
+        this.api.Put('FormaPagoes', this.FormService.formaPago.id, object)
+        this.dialog.closeAll();
+        window.location.reload()
+      }
     Swal.fire(
       'Buen Trabajo!',
       'Haz Terminado El Formulario!',

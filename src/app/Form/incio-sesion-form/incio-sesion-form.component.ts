@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FormsService } from 'src/app/services/forms.service';
 import { RestService } from 'src/app/services/rest.service';
 import Swal from 'sweetalert2';
@@ -13,7 +14,7 @@ export class IncioSesionFormComponent {
 
   usuariosArray: { nombreusuario: string, password: string }[] = [];
 
-  constructor(private restService: RestService, private formService: FormsService) { }
+  constructor(private restService: RestService, private formService: FormsService, private router: Router) { }
 
   private fb = inject(FormBuilder);
   loginForm = this.fb.group({
@@ -35,15 +36,17 @@ export class IncioSesionFormComponent {
           const userData = response;
           const loginEstado = true;
           const nombre = localStorage.setItem('nombre', userData.nombre);
-          this.formService.changeUserName(userData.nombre);
+          this.formService.changeUserName(localStorage.getItem('nombre'));
           console.log(nombre)
           console.log(loginEstado)
           console.log('Datos del estudiante:', userData);
+          this.formService.login();
           Swal.fire({
             title: 'Usuario Autenticado!',
             text: 'Inicio de Sesión Exitoso!',
             icon: 'success'
           });
+          this.router.navigate(['/bienvenida']);
         } else {
           console.log('Inicio de sesión fallido. Credenciales incorrectas.');
           Swal.fire({

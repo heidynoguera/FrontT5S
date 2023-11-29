@@ -11,10 +11,12 @@ import { GeografiaComponent } from './components/geografia/geografia.component';
 import { ReservarTutoriaComponent } from './components/reservar-tutoria/reservar-tutoria.component';
 import { RepositorioComponent } from './components/repositorio/repositorio.component';
 import { IncioSesionFormComponent } from './Form/incio-sesion-form/incio-sesion-form.component';
+import { BienvenidaComponent } from './components/bienvenida/bienvenida.component';
 
 
 
 const routes: Routes = [
+  {path: '', redirectTo: '/Iniciar Sesion', pathMatch: 'full' },
   {path: "formapago", component: FormaPagoComponent},
   {path: "calendario", component: CalendarioComponent},
   {path: "login", component: LoginComponent},
@@ -26,6 +28,7 @@ const routes: Routes = [
   {path: "reservaTutoria", component: ReservarTutoriaComponent},
   {path: "repositorio", component: RepositorioComponent},
   {path: "Iniciar Sesion", component: IncioSesionFormComponent},
+  {path: 'bienvenida', component: BienvenidaComponent }
 ];
 
 @NgModule({

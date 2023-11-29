@@ -46,6 +46,7 @@ import { FormMateriaComponent } from './Form/form-materia/form-materia.component
 import { FormTutorComponent } from './Form/form-tutor/form-tutor.component';
 import { FormTutormateriaComponent } from './Form/form-tutormateria/form-tutormateria.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { BienvenidaComponent } from './components/bienvenida/bienvenida.component';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormTutorComponent,
     FormTutormateriaComponent,
     IncioSesionFormComponent,
+    BienvenidaComponent,
     
   ],
   imports: [

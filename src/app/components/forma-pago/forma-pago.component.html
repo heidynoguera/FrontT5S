@@ -20,7 +20,7 @@
         <div *ngIf="column == 'Editar'">
           <th  id="tableHeader" mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}</th>
           <td id="icon" mat-cell *matCellDef="let row">
-            <a class="opcion" (click)="mostrarNotificacionEdit()" id="iconEdit"><mat-icon>edit</mat-icon></a>
+            <a class="opcion" (click)="onEdit(row)" id="iconEdit"><mat-icon>edit</mat-icon></a>
           </td>
         </div>
 

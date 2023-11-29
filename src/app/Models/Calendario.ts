@@ -3,5 +3,4 @@ export class Calendario{
     FechaCalendario: Date;
     DescripcionCalendario: string;
     estado:string;
-
 }

@@ -19,45 +19,54 @@ export class FormCalendarioComponent implements OnInit {
     Fecha: ['', Validators.required],
     Descripcion: ['', Validators.required]
   });
-/**
- *
- */
-constructor(public dialog:MatDialog, public FormService:FormsService, public api:RestService) { 
-}
-title:string
+  /**
+   *
+   */
+  constructor(public dialog: MatDialog, public FormService: FormsService, public api: RestService) {
+  }
+  title: string
   ngOnInit(): void {
-    if(this.FormService.title=='Editar'){
-      this.title=this.FormService.title 
+    console.log(this.FormService.calendario)
+    if (this.FormService.title == 'Editar') {
+      this.title = this.FormService.title
       this.calendarioForm.setControl('Fecha', new FormControl(String(this.FormService.calendario.fecha)));
       this.calendarioForm.setControl('Descripcion', new FormControl(this.FormService.calendario.descripcion));
 
-      }else
+    } else
 
-if(this.FormService.title=='Crear'){
-  this.title=this.FormService.title 
-  }
+      if (this.FormService.title == 'Crear') {
+        this.title = this.FormService.title
+      }
   }
   hasUnitNumber = false;
 
   onSubmit(): void {
     if (this.calendarioForm.valid) {
-      if(this.FormService.title=='Editar'){
-        let object:Calendario ={
-          IdCalendario:Number(this.FormService.calendario.id),
-          FechaCalendario:new Date(this.calendarioForm.controls['Fecha'].value),
-          DescripcionCalendario:this.calendarioForm.controls['Descripcion'].value,
-          estado:this.FormService.calendario.estado
+      if (this.FormService.title == 'Editar') {
+        let object: Calendario = {
+          IdCalendario: Number(this.FormService.calendario.id),
+          FechaCalendario: new Date(this.calendarioForm.controls['Fecha'].value),
+          DescripcionCalendario: this.calendarioForm.controls['Descripcion'].value,
+          estado: this.FormService.calendario.estado
         }
-        this.api.Put('Calendarios',this.FormService.calendario.id, object)
+        this.api.Put('Calendarios', this.FormService.calendario.id, object)
         this.dialog.closeAll();
         window.location.reload()
-    }
-    Swal.fire(
-      'Buen Trabajo!',
-      'Haz Terminado El Formulario!',
-      'success'
-    )
-    }else{
+      } else if(this.FormService.title == 'Crear'){
+        let object: Calendario = {
+          IdCalendario: Number("3"),
+          FechaCalendario: new Date(this.calendarioForm.controls['Fecha'].value),
+          DescripcionCalendario: this.calendarioForm.controls['Descripcion'].value,
+          estado: "Activo"
+        }
+        this.api.Post('Calendarios', object)
+      }
+      Swal.fire(
+        'Buen Trabajo!',
+        'Haz Terminado El Formulario!',
+        'success'
+      )
+    } else {
       Swal.fire(
         'Por favor llenar todos los campos!',
         'Error en el Formulario!',

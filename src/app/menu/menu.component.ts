@@ -11,9 +11,14 @@ import { FormsService } from '../services/forms.service';
 })
 export class MenuComponent {
   private breakpointObserver = inject(BreakpointObserver);
+  isLoggedIn = false;
 
   constructor(public formService: FormsService) {
-  }
+
+  this.formService.isLoggedIn.subscribe((loggedIn) => {
+    this.isLoggedIn = loggedIn;
+  });
+}
 
   avatarname: string = '';
 
@@ -24,6 +29,16 @@ export class MenuComponent {
     this.formService.currentUserName.subscribe(name => {
       this.avatarname = name;
     });
+  }
+
+  logout(){
+    this.formService.logout();
+    this.formService.changeUserName('T 5 S')
+  }
+
+  login(){
+    this.formService.login()
+    console.log(this.formService.isLoggedIn)
   }
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)

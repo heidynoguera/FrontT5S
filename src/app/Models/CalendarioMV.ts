@@ -3,7 +3,4 @@ export class CalendarioMV{
     fecha: Date;
     descripcion: string;
     estado:string
-
-
-
 }
