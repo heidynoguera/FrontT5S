@@ -1,5 +1,4 @@
-export class CalendarioMV{
-    id: number;
+export class CalendarioNewMV{
     fecha: Date;
     descripcion: string;
     estado:string

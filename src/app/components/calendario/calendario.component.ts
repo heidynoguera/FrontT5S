@@ -15,30 +15,30 @@ import Swal from 'sweetalert2';
   styleUrls: ['./calendario.component.css']
 })
 
-export class CalendarioComponent implements OnInit, AfterViewInit{
+export class CalendarioComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = [];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort; 
+  @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(public FormService:FormsService, public api: RestService, public dialog: MatDialog, private router: Router){
+  constructor(public FormService: FormsService, public api: RestService, public dialog: MatDialog, private router: Router) {
 
     this.dataSource = new MatTableDataSource();
 
   }
-  ngOnInit(): void{
+  ngOnInit(): void {
     //this.get();
 
-    this.api.Get("calendarios").then((res)=>{
+    this.api.Get("calendarios").then((res) => {
 
-      for(let index = 0; index < res.length; index++){
+      for (let index = 0; index < res.length; index++) {
         this.loadTable([res[index]])
       }
 
-      this.dataSource.data= res;
+      this.dataSource.data = res;
 
     })
 
@@ -54,21 +54,21 @@ export class CalendarioComponent implements OnInit, AfterViewInit{
   }
 
   openDialog() {
-    this.FormService.title='Crear'
+    this.FormService.title = 'Crear'
     const dialogRef = this.dialog.open(FormCalendarioComponent);
   }
 
-  loadTable(data:any[]){
-    this.displayedColumns=[];
-    for(let column in data[0]){
+  loadTable(data: any[]) {
+    this.displayedColumns = [];
+    for (let column in data[0]) {
       this.displayedColumns.push(column)
     }
-    this.displayedColumns.push("Editar", "Delete") 
+    this.displayedColumns.push("Editar", "Delete")
   }
 
   ngAfterViewInit(): void {
 
-       
+
 
     this.dataSource.paginator = this.paginator;
 
@@ -80,31 +80,31 @@ export class CalendarioComponent implements OnInit, AfterViewInit{
 
 
 
-  // Cambiar el formato de la etiqueta de rango directamente
+    // Cambiar el formato de la etiqueta de rango directamente
 
-  this.paginator._intl.getRangeLabel = (page: number, pageSize: number, length: number) => {
+    this.paginator._intl.getRangeLabel = (page: number, pageSize: number, length: number) => {
 
-    if (length === 0 || pageSize === 0) {
+      if (length === 0 || pageSize === 0) {
 
-      return `0 de ${length}`;
+        return `0 de ${length}`;
 
-    }
-
-
-
-    length = Math.max(length, 0);
+      }
 
 
 
-    const startIndex = page * pageSize;
-
-    const endIndex = startIndex < length ? Math.min(startIndex + pageSize, length) : startIndex + pageSize;
+      length = Math.max(length, 0);
 
 
 
-    return `${startIndex + 1} - ${endIndex} de ${length}`;
+      const startIndex = page * pageSize;
 
-  };
+      const endIndex = startIndex < length ? Math.min(startIndex + pageSize, length) : startIndex + pageSize;
+
+
+
+      return `${startIndex + 1} - ${endIndex} de ${length}`;
+
+    };
 
   }
 
@@ -117,22 +117,22 @@ export class CalendarioComponent implements OnInit, AfterViewInit{
     }
   }
 
-  public crearCalendario(nuevoCalendario : any) {
+  public crearCalendario(nuevoCalendario: any) {
     this.api.Post("Calendarios", nuevoCalendario);
   }
 
-  public get (){
+  public get() {
     this.api.Get("calendarios");
   }
 
-  public actualizarCalendario(idCalendario: number) { 
+  public actualizarCalendario(idCalendario: number) {
     const newData = { /* tus datos a actualizar */ };
 
     // Llama al método Put del servicio RestService.
     this.api.Put("calendarios", idCalendario, newData);
   }
 
-  mostrarNotificacionDelete(idCalendario: number, FechaCalendario: any, DescripcionCalendario: any ) {
+  mostrarNotificacionDelete(idCalendario: number) {
     // Verificar si el navegador soporta las notificaciones
     Swal.fire({
       title: '¿Estás seguro?',
@@ -144,17 +144,16 @@ export class CalendarioComponent implements OnInit, AfterViewInit{
       confirmButtonText: 'Sí, Bórralo!'
     }).then((result) => {
       if (result.isConfirmed) {
-        // Llama al servicio REST para actualizar el estado del calendario a "Inactivo"
-        this.api.Put('calendarios', idCalendario, {IdCalendario: idCalendario, FechaCalendario: FechaCalendario, DescripcionCalendario: DescripcionCalendario, estado: 'Inactivo' });
-          Swal.fire('Eliminado', 'El elemento ha sido eliminado.', 'success');
-          // Actualiza la lista de calendarios para reflejar el cambio
-          this.api.Get('calendarios').then((res) => {
-            this.dataSource.data = res;
-          });
+        this.api.Delete("calendarios", idCalendario);
+        window.location.reload();
+        Swal.fire('Eliminado', 'El elemento ha sido eliminado.', 'success');
+        this.api.Get('calendarios').then((res) => {
+          this.dataSource.data = res;
+        });
       }
     });
   }
-  
+
   mostrarNotificacionEdit() {
     // Verificar si el navegador soporta las notificaciones
     Swal.fire({
@@ -173,22 +172,17 @@ export class CalendarioComponent implements OnInit, AfterViewInit{
     })
   }
 
-  onEdit(element:any) {
-this.FormService.title='Editar'
+  onEdit(element: any) {
+    this.FormService.title = 'Editar'
     // console.log('ID seleccionado:', id);
-     this.dialog.open(FormCalendarioComponent)
-     console.log(element);
-     
-    this.FormService.calendario=element
+    this.dialog.open(FormCalendarioComponent)
+    console.log(element);
+
+    this.FormService.calendario = element
     console.log(element.id);
 
-    
+
   }
 
-   //public async deleteCalendario(idCalendario: string) {
-
-    //const response = await this.api.Delete("calendarios", "2");
-  
-  //}
 }
 

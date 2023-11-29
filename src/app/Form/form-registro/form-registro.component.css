@@ -1,44 +1,73 @@
-.login-wrapper {
-  height: 100vh; /* Ajusta la altura según tus necesidades */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.full-width {
+  width: 100%;
 }
 
 .shipping-card {
-  width: 300px; /* Ajusta el ancho según tus necesidades */
+  min-width: 120px;
+  margin: 20px auto;
+}
+
+.mat-radio-button {
+  display: block;
+  margin: 5px 0;
 }
 
 .row {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .col {
-  flex: 1; /* Hace que cada columna tenga el mismo ancho */
-  margin: 1px; /* Espacio entre las columnas, ajusta según tus necesidades */
+  flex: 1;
+  margin-right: 20px;
 }
 
-.full-width {
+.col:last-child {
+  margin-right: 0;
+}
+
+/*#Title{
+  color: aliceblue;
+  font-weight: 800;
+  font-size: 2em;
+  font-family: 'Roboto';
+}*/
+
+#Title{
+  font-size: 28px;
+  font-weight: 600;
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: aliceblue;
+}
+
+#cardHeader{
+  align-self: center;
+}
+
+#cardContent{
+  padding: 30px 16px;
+}
+
+#labelC{
+  color: aliceblue;
+  font-size: 14px;
+  font-family: 'Roboto';
+}
+
+#button{
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  background-color: #645bff;
   width: 100%;
-  margin-bottom: 15px;
+  font-family: 'Roboto';
 }
 
-.btn-block {
-  width: 100%;
-  margin-top: 10px;
-}
-
-input[type='text'],
-input[type='password'] {
-    border: none;
-    outline: none;
-    box-shadow: none;
-    width: 100%
-}
-
-.fa-eye-slash.btn {
-    border: none;
-    outline: none;
-    box-shadow: none
+#button:hover{
+  background-color: #00bfff96;
 }

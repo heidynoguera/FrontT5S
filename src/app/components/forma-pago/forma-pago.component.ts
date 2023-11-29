@@ -1,9 +1,10 @@
-import { AfterViewInit ,Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormPagoComponent } from 'src/app/Form/form-pago/form-pago.component';
+import { FormsService } from 'src/app/services/forms.service';
 import { RestService } from 'src/app/services/rest.service';
 import Swal from 'sweetalert2';
 
@@ -12,50 +13,43 @@ import Swal from 'sweetalert2';
   templateUrl: './forma-pago.component.html',
   styleUrls: ['./forma-pago.component.css']
 })
-export class FormaPagoComponent implements OnInit, AfterViewInit{
+export class FormaPagoComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = [];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort; 
+  @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(public api: RestService, public dialog: MatDialog){
+  constructor(public api: RestService, public dialog: MatDialog, public FormService: FormsService) {
 
     this.dataSource = new MatTableDataSource();
 
   }
-  ngOnInit(): void{
-    //this.get();
+  ngOnInit(): void {
 
-    this.api.Get("FormaPagoes").then((res)=>{
+    this.api.Get("FormaPagoes").then((res) => {
 
-      for(let index = 0; index < res.length; index++){
+      for (let index = 0; index < res.length; index++) {
         this.loadTable([res[index]])
       }
 
-      this.dataSource.data= res;
+      this.dataSource.data = res;
 
     })
-
-    // const nuevoFormaPago={
-    //   idPago: 2,
-    //   tipoPago: "cheque",
-    //   valoraPagar: 1000000
-    // };
-
-    // this.crearFormaPago(nuevoFormaPago)
 
   }
 
   openDialog() {
+    this.FormService.title = 'Crear';
+    console.log(this.FormService.title)
     const dialogRef = this.dialog.open(FormPagoComponent);
   }
 
-  loadTable(data:any[]){
-    this.displayedColumns=[];
-    for(let column in data[0]){
+  loadTable(data: any[]) {
+    this.displayedColumns = [];
+    for (let column in data[0]) {
       this.displayedColumns.push(column)
     }
     this.displayedColumns.push("Editar", "Delete")
@@ -63,7 +57,7 @@ export class FormaPagoComponent implements OnInit, AfterViewInit{
 
   ngAfterViewInit(): void {
 
-       
+
 
     this.dataSource.paginator = this.paginator;
 
@@ -75,34 +69,34 @@ export class FormaPagoComponent implements OnInit, AfterViewInit{
 
 
 
-  // Cambiar el formato de la etiqueta de rango directamente
+    // Cambiar el formato de la etiqueta de rango directamente
 
-  this.paginator._intl.getRangeLabel = (page: number, pageSize: number, length: number) => {
+    this.paginator._intl.getRangeLabel = (page: number, pageSize: number, length: number) => {
 
-    if (length === 0 || pageSize === 0) {
+      if (length === 0 || pageSize === 0) {
 
-      return `0 de ${length}`;
+        return `0 de ${length}`;
 
-    }
-
-
-
-    length = Math.max(length, 0);
+      }
 
 
 
-    const startIndex = page * pageSize;
-
-    const endIndex = startIndex < length ? Math.min(startIndex + pageSize, length) : startIndex + pageSize;
+      length = Math.max(length, 0);
 
 
 
-    return `${startIndex + 1} - ${endIndex} de ${length}`;
+      const startIndex = page * pageSize;
 
-  };
+      const endIndex = startIndex < length ? Math.min(startIndex + pageSize, length) : startIndex + pageSize;
+
+
+
+      return `${startIndex + 1} - ${endIndex} de ${length}`;
+
+    };
 
   }
-  
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -112,22 +106,22 @@ export class FormaPagoComponent implements OnInit, AfterViewInit{
     }
   }
 
-  public crearFormaPago(nuevoFormaPago : any) {
+  public crearFormaPago(nuevoFormaPago: any) {
     this.api.Post("FormaPagoes", nuevoFormaPago);
   }
 
-  public get (){
+  public get() {
     this.api.Get("FormaPagoes");
   }
 
-  public actualizarFormaPagoes(idPago: number) { 
+  public actualizarFormaPagoes(idPago: number) {
     const newData = { /* tus datos a actualizar */ };
 
     // Llama al método Put del servicio RestService.
     this.api.Put("FormaPagoes", idPago, newData);
-  } 
+  }
 
-  mostrarNotificacionDelete(idPago: number, TipodePago: any, valoraPagar: any ) {
+  mostrarNotificacionDelete(idPago: number) {
     // Verificar si el navegador soporta las notificaciones
     Swal.fire({
       title: '¿Estás seguro?',
@@ -139,14 +133,13 @@ export class FormaPagoComponent implements OnInit, AfterViewInit{
       confirmButtonText: 'Sí, Bórralo!'
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(TipodePago)
-        // Llama al servicio REST para actualizar el estado de la forma de pago a "Inactivo"
-        this.api.Put('FormaPagoes', idPago, {idPago, TipoPago: TipodePago, valoraPagar: valoraPagar, estado: 'Inactivo'});
-          Swal.fire('Eliminado', 'El elemento ha sido eliminado.', 'success');
-          // Actualiza la lista de forma de pago para reflejar el cambio
-          this.api.Get('FormaPagoes').then((res) => {
-            this.dataSource.data = res;
-          });
+        this.api.Delete("FormaPagoes", idPago)
+        window.location.reload()
+        Swal.fire('Eliminado', 'El elemento ha sido eliminado.', 'success');
+        // Actualiza la lista de forma de pago para reflejar el cambio
+        this.api.Get('FormaPagoes').then((res) => {
+          this.dataSource.data = res;
+        });
       }
     });
   }
@@ -169,9 +162,15 @@ export class FormaPagoComponent implements OnInit, AfterViewInit{
     })
   }
 
-   //public async deleteFormaPagoes(idPago: string) {
+  onEdit(element: any) {
+    this.FormService.title = 'Editar'
+    this.dialog.open(FormPagoComponent)
+    console.log(element);
 
-    //const response = await this.api.Delete("FormaPagoes", "2");
-  
-  //}
+    this.FormService.formaPago = element
+    console.log(element.id);
+
+
+  }
+
 }

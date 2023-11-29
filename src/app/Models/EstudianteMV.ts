@@ -1,4 +1,4 @@
-export class CalendarioMV{
+export class EstudianteMV{
     id: number;
     fecha: Date;
     descripcion: string;

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-
 import { FormBuilder, Validators } from '@angular/forms';
-
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-recuperar-password',
@@ -10,28 +10,30 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class FormRecuperarPasswordComponent {
   private fb = inject(FormBuilder);
-  addressForm = this.fb.group({
-    company: null,
-    firstName: [null, Validators.required],
-    lastName: [null, Validators.required],
-    address: [null, Validators.required],
-    address2: null,
-    city: [null, Validators.required],
-    state: [null, Validators.required],
-    postalCode: [null, Validators.compose([
-      Validators.required, Validators.minLength(5), Validators.maxLength(5)])
-    ],
-    shipping: ['free', Validators.required]
+
+  passwordResetForm = this.fb.group({
+    email: [null, Validators.required]
   });
 
-  hasUnitNumber = false;
-
-  states = [
-    {name: 'Wisconsin', abbreviation: 'WI'},
-    {name: 'Wyoming', abbreviation: 'WY'}
-  ];
+  constructor(private router: Router){
+  }
 
   onSubmit(): void {
-    alert('Thanks!');
+    const email = this.passwordResetForm.get('email').value;
+
+    if (email) {
+      Swal.fire(
+        'Contraseña Restablecida',
+        'Sigue los pasos que llegarán a tu correo para el restablecimiento de la contraseña',
+        'success'
+      );
+      this.router.navigate(['/']);
+    } else {
+      Swal.fire(
+        'Campo Vacío',
+        'Por favor, ingresa tu contraseña',
+        'error'
+      );
+    }
   }
 }

@@ -13,10 +13,11 @@ import { RepositorioComponent } from './components/repositorio/repositorio.compo
 import { IncioSesionFormComponent } from './Form/incio-sesion-form/incio-sesion-form.component';
 import { FormRegistroComponent } from './Form/form-registro/form-registro.component';
 import { FormRecuperarPasswordComponent } from './Form/form-recuperar-password/form-recuperar-password.component';
-
+import { BienvenidaComponent } from './components/bienvenida/bienvenida.component'
 
 
 const routes: Routes = [
+  {path: '', redirectTo: '/Iniciar Sesion', pathMatch: 'full' },
   {path: "formapago", component: FormaPagoComponent},
   {path: "calendario", component: CalendarioComponent},
   {path: "login", component: LoginComponent},
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path: "Registro", component: FormRegistroComponent},
   {path: "RecuperarPassword", component: FormRecuperarPasswordComponent},
   {path: "Iniciar Sesion", component: IncioSesionFormComponent},
+  {path: 'bienvenida', component: BienvenidaComponent }
 ];
 
 @NgModule({
