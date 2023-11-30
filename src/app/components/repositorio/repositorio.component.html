@@ -18,14 +18,14 @@
         <div *ngIf="column == 'Editar'">
           <th id="tableHeader" mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}</th>
           <td id="icon" mat-cell *matCellDef="let row">
-            <a class="opcion" (click)="mostrarNotificacionEdit()" id="iconEdit"><mat-icon>edit</mat-icon></a>
+            <a class="opcion" (click)="onEdit(row)" id="iconEdit"><mat-icon>edit</mat-icon></a>
           </td>
         </div>
 
         <div *ngIf="column == 'Delete'">
           <th id="tableHeader" mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}</th>
           <td id="icon" mat-cell *matCellDef="let row">
-            <a class="opcion" (click)="mostrarNotificacionDelete()" id="iconDelete"><mat-icon>delete</mat-icon></a>
+            <a class="opcion" (click)="mostrarNotificacionDelete(row.id)" id="iconDelete"><mat-icon>delete</mat-icon></a>
           </td>
         </div>
       </div>
@@ -43,7 +43,6 @@
 
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
-
 </div>
 <div id="button">
   <button mat-button (click)="openDialog()" class="beautiful-button">Nuevo

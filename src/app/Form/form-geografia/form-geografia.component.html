@@ -15,9 +15,9 @@
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="País" formControlName="País">
-            <mat-error *ngIf="geographyForm.controls['País'].hasError('required')">
-              País es <strong>Obligatorio</strong>
+            <input matInput placeholder="Pais" formControlName="Pais">
+            <mat-error *ngIf="geographyForm.controls['Pais'].hasError('required')">
+              Pais es <strong>Obligatorio</strong>
             </mat-error>
           </mat-form-field>
         </div>
@@ -25,7 +25,8 @@
 
     </mat-card-content>
     <mat-card-actions>
-      <button id="button" mat-raised-button color="primary" type="submit">Guardar</button>
+      <button id="button" mat-raised-button color="primary" type="submit">{{title}}
+      </button>
     </mat-card-actions>
   </mat-card>
 </form>

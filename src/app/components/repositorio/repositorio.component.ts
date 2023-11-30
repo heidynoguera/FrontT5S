@@ -6,6 +6,8 @@ import { RestService } from 'src/app/services/rest.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormRepositorioComponent } from 'src/app/Form/form-repositorio/form-repositorio.component';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { FormsService } from 'src/app/services/forms.service';
 @Component({
   selector: 'app-repositorio',
   templateUrl: './repositorio.component.html',
@@ -19,8 +21,9 @@ export class RepositorioComponent implements OnInit, AfterViewInit {
   paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(public api: RestService, public dialog: MatDialog) {
+  constructor(public FormService: FormsService, public api: RestService, public dialog: MatDialog, private router: Router) {
     this.dataSource = new MatTableDataSource();
+
   }
   ngOnInit(): void {
     this.api.Get("Repositorios").then((res) => {
@@ -76,44 +79,40 @@ export class RepositorioComponent implements OnInit, AfterViewInit {
   }
 
   openDialog() {
+    this.FormService.title = 'Crear'
     const dialogRef = this.dialog.open(FormRepositorioComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
   //actualizar datos
-  public putRepositorio(idRepositorio: number) {
+  public putRepositorio(IdRepositorio: number) {
     const newData = { /* tus datos a actualizar */ };
-    this.api.Put("Repositorios", idRepositorio, newData);
+    this.api.Put("Repositorios", IdRepositorio, newData);
   }
   //crear datos
   public postRepositorio(newRepositorio: any) {
     this.api.Post("Repositorios", newRepositorio);
   }
-  //borrar datos
-  public async deleteRepositorio(IdRepositorio: any) {
-    const response = await this.api.Delete("Repositorios", IdRepositorio);
-  }
-  mostrarNotificacionDelete() {
+
+
+  mostrarNotificacionDelete(IdRepositorio: number) {
     // Verificar si el navegador soporta las notificaciones
     Swal.fire({
-      title: '¿Esta seguro?',
-      text: "No podrás revertir esto",
+      title: '¿Estás seguro?',
+      text: 'No podrás revertir esto',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, Bórralo!'
+      confirmButtonText: 'Sí, Bórralo!'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Borrado!',
-          'El elemento ha sido borrado.',
-          'success'
-        )
+        this.api.Delete("Repositorios", IdRepositorio);
+        window.location.reload();
+        Swal.fire('Eliminado', 'El elemento ha sido eliminado.', 'success');
+        this.api.Get('Repositorios').then((res) => {
+          this.dataSource.data = res;
+        });
       }
-    })
+    });
   }
   
   mostrarNotificacionEdit() {
@@ -132,5 +131,16 @@ export class RepositorioComponent implements OnInit, AfterViewInit {
         Swal.fire('Los cambios no se han guardado', '', 'info')
       }
     })
+  }
+onEdit(element: any) {
+  this.FormService.title = 'Editar'
+  // console.log('ID seleccionado:', id);
+  this.dialog.open(FormRepositorioComponent)
+  console.log(element);
+
+  this.FormService.repositorio = element
+  console.log(element.id);
+
+
 }
 }
