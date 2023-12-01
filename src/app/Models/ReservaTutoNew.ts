@@ -1,7 +1,7 @@
-export class RepositorioNew{
-    FechaTutoria: string ;
-    HoraTutoria: string ;
-    CantidadHoras: string ;
+export class reservaTutoNew{
+    FechaTutoria: Date ;
+    HoraTutoria: Date ;
+    CantidadHoras: number ;
     Localidad: string ;
     Barrio: string ;
     DireccionTutoria: string ;

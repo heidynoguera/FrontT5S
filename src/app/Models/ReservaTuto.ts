@@ -1,8 +1,10 @@
-export class RepositorioMV{
+
+
+export class ReservaTuto{
     IdReserva: number ;
-    FechaTutoria: string ;
-    HoraTutoria: string ;
-    CantidadHoras: string ;
+    FechaTutoria: Date ;
+    HoraTutoria: Date;
+    CantidadHoras: number ;
     Localidad: string ;
     Barrio: string ;
     DireccionTutoria: string ;

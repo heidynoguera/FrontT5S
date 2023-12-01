@@ -1,14 +1,15 @@
-export class RepositorioNewMV{
-    FechaTutoria: string ;
-    HoraTutoria: string ;
-    CantidadHoras: string ;
-    Localidad: string ;
-    Barrio: string ;
-    DireccionTutoria: string ;
-    TipoTutoria: string ;
-    DescripcionTutoria: string ;
-    IdMateria :number = 1;
-    IdPago :number = 1;
-    IdGeografia :number = 1;
+
+export class reservaTutoNewMV{
+    fechaTutoria: Date ;
+    horaTutoria: Date ;
+    cantidadHoras: number ;
+    localidad: string ;
+    barrio: string ;
+    direccionTutoria: string ;
+    tipoTutoria: string ;
+    descripcionTutoria: string ;
+    idMateria :number = 1;
+    idPago :number = 1;
+    idGeografia :number = 1;
     estado: number ;
     }
