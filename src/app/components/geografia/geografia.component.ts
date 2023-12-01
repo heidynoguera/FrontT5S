@@ -4,6 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { RestService } from 'src/app/services/rest.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { FormsService } from 'src/app/services/forms.service';
 import { FormGeografiaComponent } from 'src/app/Form/form-geografia/form-geografia.component';
 import Swal from 'sweetalert2';
 
@@ -20,8 +22,9 @@ export class GeografiaComponent implements OnInit, AfterViewInit {
   paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(public api: RestService, public dialog: MatDialog) {
+  constructor(public FormService: FormsService, public api: RestService, public dialog: MatDialog, private router: Router) {
     this.dataSource = new MatTableDataSource();
+
   }
 
   ngOnInit(): void {
@@ -77,17 +80,14 @@ export class GeografiaComponent implements OnInit, AfterViewInit {
     this.api.Get("Geografiums");
   }
   openDialog() {
+    this.FormService.title = 'Crear'
     const dialogRef = this.dialog.open(FormGeografiaComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 
   //actualizar datos
-  public putGeografia(idGeografia: number) {
+  public putGeografia(IdGeografia: number) {
     const newData = { /* tus datos a actualizar */ };
-    this.api.Put("Geografiums", idGeografia, newData);
+    this.api.Put("Geografiums", IdGeografia, newData);
   }
   //crear datos
   public postGeografia(newGeografia: any) {
@@ -97,25 +97,26 @@ export class GeografiaComponent implements OnInit, AfterViewInit {
   //public async deleteGeografia(IdGeografia: string) {
   //   const response = await this.api.Delete("Geografiums", IdGeografia);
   //}
-  mostrarNotificacionDelete() {
+  mostrarNotificacionDelete(IdGeografia: number) {
     // Verificar si el navegador soporta las notificaciones
     Swal.fire({
-      title: '¿Esta seguro?',
-      text: "No podrás revertir esto",
+      title: '¿Estás seguro?',
+      text: 'No podrás revertir esto',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, Bórralo!'
+      confirmButtonText: 'Sí, Bórralo!'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Borrado!',
-          'El elemento ha sido borrado.',
-          'success'
-        )
+        this.api.Delete("Geografiums", IdGeografia);
+        window.location.reload();
+        Swal.fire('Eliminado', 'El elemento ha sido eliminado.', 'success');
+        this.api.Get('Geografiums').then((res) => {
+          this.dataSource.data = res;
+        });
       }
-    })
+    });
   }
 
   mostrarNotificacionEdit() {
@@ -134,5 +135,16 @@ export class GeografiaComponent implements OnInit, AfterViewInit {
         Swal.fire('Los cambios no se han guardado', '', 'info')
       }
     })
+  }
+  onEdit(element: any) {
+    this.FormService.title = 'Editar'
+    // console.log('ID seleccionado:', id);
+    this.dialog.open(FormGeografiaComponent)
+    console.log(element);
+
+    this.FormService.geografia = element
+    console.log(element.id);
+
+
   }
 }

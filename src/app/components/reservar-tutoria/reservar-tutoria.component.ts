@@ -6,6 +6,8 @@ import { RestService } from 'src/app/services/rest.service';
 import {MatDialog} from '@angular/material/dialog';
 import { FormReservaTutoriaComponent } from 'src/app/Form/form-reserva-tutoria/form-reserva-tutoria.component';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { FormsService } from 'src/app/services/forms.service';
 @Component({
   selector: 'app-reservar-tutoria',
   templateUrl: './reservar-tutoria.component.html',
@@ -18,8 +20,10 @@ export class ReservarTutoriaComponent implements OnInit, AfterViewInit{
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(public api: RestService,public dialog: MatDialog) {
+  constructor(public FormService: FormsService, public api: RestService, public dialog: MatDialog, private router: Router) {
+
     this.dataSource = new MatTableDataSource();
+
   }
 
   ngOnInit(): void{
@@ -75,11 +79,8 @@ export class ReservarTutoriaComponent implements OnInit, AfterViewInit{
     this.api.Get("ResevarTutoriums");
   }
   openDialog() {
+    this.FormService.title = 'Crear'
     const dialogRef = this.dialog.open(FormReservaTutoriaComponent);
-  
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 
   //actualizar datos
@@ -96,25 +97,26 @@ export class ReservarTutoriaComponent implements OnInit, AfterViewInit{
     const response = await this.api.Delete("ResevarTutoriums", idReserva);
 }
 
-mostrarNotificacionDelete() {
+mostrarNotificacionDelete(idReserva: number) {
   // Verificar si el navegador soporta las notificaciones
   Swal.fire({
-    title: '¿Esta seguro?',
-    text: "No podrás revertir esto",
+    title: '¿Estás seguro?',
+    text: 'No podrás revertir esto',
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
-    confirmButtonText: 'Si, Bórralo!'
+    confirmButtonText: 'Sí, Bórralo!'
   }).then((result) => {
     if (result.isConfirmed) {
-      Swal.fire(
-        'Borrado!',
-        'El elemento ha sido borrado.',
-        'success'
-      )
+      this.api.Delete("ResevarTutoriums", idReserva);
+      window.location.reload();
+      Swal.fire('Eliminado', 'El elemento ha sido eliminado.', 'success');
+      this.api.Get('ResevarTutoriums').then((res) => {
+        this.dataSource.data = res;
+      });
     }
-  })
+  });
 }
 
 mostrarNotificacionEdit() {
@@ -133,5 +135,16 @@ mostrarNotificacionEdit() {
       Swal.fire('Los cambios no se han guardado', '', 'info')
     }
   })
+}
+onEdit(element: any) {
+  this.FormService.title = 'Editar'
+  // console.log('ID seleccionado:', id);
+  this.dialog.open(FormReservaTutoriaComponent)
+  console.log(element);
+
+  this.FormService.reservaTuto = element
+  console.log(element.id);
+
+
 }
 }

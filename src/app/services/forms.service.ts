@@ -6,6 +6,14 @@ import { CalendarioNewMV } from '../Models/CalendarioNewMV';
 import { formaPagoNewMV } from '../Models/formaPagoNewMV';
 import { registroEstudianteMV } from '../Models/registroEstudianteMV';
 import { registroLoginMV } from '../Models/registroLoginMV';
+import { GeografiaMV } from '../Models/GeografiaMV';
+import { GeografiaNewMV } from '../Models/GeografiaNewMV';
+import { RepositorioMV } from '../Models/RepositorioMV';
+import { RepositorioNewMv } from '../Models/RepositorioNewMv';
+import { ReservaTutoMV } from '../Models/ReservaTutoMV';
+import { reservaTutoNewMV } from '../Models/ReservaTutoNewMV';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +34,12 @@ export class FormsService {
   formaPagoNew: formaPagoNewMV;
   registroEstudiante: registroEstudianteMV;
   registroLogin: registroLoginMV;
+  geografia:GeografiaMV;
+  geografiaNew: GeografiaNewMV;
+  repositorio: RepositorioMV;
+  repositorioNew:  RepositorioNewMv; 
+  reservaTuto: ReservaTutoMV;
+  reservaTutoNew: reservaTutoNewMV;
 
   changeUserName(name: string) {
     this.userNameSource.next(name);

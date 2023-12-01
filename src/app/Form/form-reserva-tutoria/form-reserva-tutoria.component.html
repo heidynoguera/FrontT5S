@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput type="date" placeholder="Fecha Tutoria" formControlName="fechaTutoria">
+            <input matInput placeholder="Ex. 2023-09-10" formControlName="fechaTutoria">
             <mat-error *ngIf="tutoriaForm.controls['fechaTutoria'].hasError('required')">
               Fecha Tutoria es <strong>obligatorio</strong>
             </mat-error>
@@ -15,7 +15,7 @@
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput type="time" placeholder="Hora Tutoria" formControlName="horaTutoria">
+            <input matInput  placeholder="03:00:00" formControlName="horaTutoria">
             <mat-error *ngIf="tutoriaForm.controls['horaTutoria'].hasError('required')">
               Hora Tutoria es <strong>obligatorio</strong>
             </mat-error>
@@ -79,7 +79,8 @@
   
     </mat-card-content>
     <mat-card-actions>
-      <button id="button" mat-raised-button color="primary" type="submit">Guardar</button>  
+      <button id="button" mat-raised-button color="primary" type="submit">{{title}}
+      </button>
     </mat-card-actions>
   </mat-card>
 </form>

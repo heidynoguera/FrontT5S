@@ -15,18 +15,19 @@
         </div>       
       </div>   
       <div class="row">
-      <div class="col">
-        <mat-form-field class="full-width">
-          <input  type="file" (change)="onFileSelected($event)" formControlName="ArchivoRepo" accept=".pdf, .doc, .docx">
-          <mat-error *ngIf="repositorioForm.controls['ArchivoRepo'].hasError('required')">
-            Archivo es <strong>Obligatorio</strong>
-          </mat-error>
-        </mat-form-field>
-      </div>
-    </div>  
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Archivo Repositorio" formControlName="ArchivoRepo">
+            <mat-error *ngIf="repositorioForm.controls['ArchivoRepo'].hasError('required')">
+              Archivo Repositorio es <strong>Obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>       
+      </div>   
     </mat-card-content>
     <mat-card-actions>
-      <button id="button" mat-raised-button color="primary" type="submit">Guardar</button>  
+      <button id="button" mat-raised-button color="primary" type="submit">{{title}}
+      </button>
     </mat-card-actions>
   </mat-card>
 </form>
